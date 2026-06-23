@@ -1,0 +1,58 @@
+---
+// Astro generuje jedną statyczną podstronę dla każdej "live" rezydencji
+// z src/data/residences.ts, np. /rezydencje/adhara, /rezydencje/urban-sky.
+// Dodanie kolejnej "live" rezydencji w przyszłości automatycznie doda nową podstronę —
+// nie trzeba tworzyć nowego pliku.
+
+import Layout from "../../layouts/Layout.astro";
+import { residences } from "../../data/residences";
+import "../../styles/residence-detail.css";
+
+export function getStaticPaths() {
+  return residences
+    .filter((residence) => residence.status === "live")
+    .map((residence) => ({
+      params: { slug: residence.slug },
+      props: { residence },
+    }));
+}
+
+const { residence } = Astro.props;
+const heroImage = residence.gallery?.[0]?.src ?? residence.image;
+---
+
+<Layout title={`${residence.name} — SAPPHIRE Apartments`} description={residence.tagline}>
+  <section class="residence-hero" style={`background-image: url('${heroImage}');`}>
+    <div class="residence-hero-content">
+      <a class="breadcrumb" href="/#rezydencje">← Wszystkie rezydencje</a>
+      <p class="overline">{residence.name} — {residence.location}</p>
+      <h1>{residence.tagline}</h1>
+    </div>
+  </section>
+
+  {residence.gallery && residence.gallery.length > 0 && (
+    <div class="gallery-grid">
+      {residence.gallery.map((image) => (
+        <figure>
+          <img src={image.src} alt={image.alt} loading="lazy" />
+        </figure>
+      ))}
+    </div>
+  )}
+
+  <div class="residence-detail-body">
+    <div class="prose">
+      {residence.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+
+    {residence.amenities.length > 0 && (
+      <ul class="amenities">
+        {residence.amenities.map((item) => <li>{item}</li>)}
+      </ul>
+    )}
+  </div>
+
+  <div class="residence-cta-block">
+    <a class="button primary dark" href="/#kontakt">Zarezerwuj {residence.name}</a>
+  </div>
+</Layout>

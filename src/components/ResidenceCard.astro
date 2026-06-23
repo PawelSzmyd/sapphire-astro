@@ -45,6 +45,6 @@ const hasImage = Boolean(residence.image);
       </ul>
     )}
 
-    <a class="text-link" href="#kontakt">{residence.ctaLabel}</a>
+    <a class="text-link" href={isComingSoon ? "#kontakt" : `/rezydencje/${residence.slug}`}>{residence.ctaLabel}</a>
   </div>
 </article>
