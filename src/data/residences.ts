@@ -36,8 +36,8 @@ export const residences: Residence[] = [
       "Szybki internet światłowodowy",
       "Idealna przestrzeń do dłuższych pobytów",
     ],
-    image: "/assets/adhara-terrace-photo.png",
-    imageAlt: "Taras przy śródziemnomorskiej plaży w Torre del Mar",
+    image: "/assets/adhara-bedroom.webp",
+    imageAlt: "Sypialnia rezydencji Adhara z sygnaturową pościelą SAPPHIRE",
     ctaLabel: "Poznaj Adharę",
   },
   {
