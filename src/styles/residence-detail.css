@@ -104,3 +104,88 @@
     grid-column: span 1;
   }
 }
+
+/* --- Lokalizacja / mapa --- */
+
+.residence-location {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px clamp(18px, 4vw, 56px) 64px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.residence-location-text p {
+  margin-top: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.map-embed {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  aspect-ratio: 4 / 3;
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 860px) {
+  .residence-location {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- FAQ --- */
+
+.residence-faq {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px clamp(18px, 4vw, 56px) 80px;
+}
+
+.faq-list {
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.faq-list details {
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.02rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-list summary::after {
+  content: "+";
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--gold);
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.faq-list details[open] summary::after {
+  content: "−";
+}
+
+.faq-list details p {
+  margin-top: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}

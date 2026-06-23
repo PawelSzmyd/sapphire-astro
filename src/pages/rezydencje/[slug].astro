@@ -52,6 +52,40 @@ const heroImage = residence.gallery?.[0]?.src ?? residence.image;
     )}
   </div>
 
+  {residence.mapQuery && (
+    <section class="residence-location">
+      <div class="residence-location-text">
+        <div class="section-label">Lokalizacja</div>
+        <h2>{residence.areaTitle}</h2>
+        {residence.areaDescription && <p>{residence.areaDescription}</p>}
+      </div>
+      <div class="map-embed">
+        <iframe
+          src={`https://www.google.com/maps?q=${encodeURIComponent(residence.mapQuery)}&output=embed`}
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+          title={`Mapa — ${residence.areaTitle}`}
+        ></iframe>
+      </div>
+    </section>
+  )}
+
+  {residence.faq && residence.faq.length > 0 && (
+    <section class="residence-faq">
+      <div class="section-label">Najczęściej zadawane pytania</div>
+      <h2>FAQ</h2>
+      <div class="faq-list">
+        {residence.faq.map((item) => (
+          <details>
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  )}
+
   <div class="residence-cta-block">
     <a class="button primary dark" href="/#kontakt">Zarezerwuj {residence.name}</a>
   </div>

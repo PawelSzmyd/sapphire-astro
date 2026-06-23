@@ -9,6 +9,11 @@ export interface GalleryImage {
   alt: string;
 }
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface Residence {
   slug: string;
   status: ResidenceStatus;
@@ -20,6 +25,10 @@ export interface Residence {
   image?: string; // zdjęcie na karcie na stronie głównej
   imageAlt?: string;
   gallery?: GalleryImage[]; // dodatkowe zdjęcia na podstronie /rezydencje/[slug]
+  mapQuery?: string; // zapytanie dla Google Maps embed, np. "Torre del Mar, Málaga, Spain"
+  areaTitle?: string; // np. "Torre del Mar"
+  areaDescription?: string; // krótki opis okolicy
+  faq?: FaqItem[];
   ctaLabel: string;
 }
 
@@ -51,6 +60,28 @@ export const residences: Residence[] = [
       { src: "/assets/adhara-terrace-photo.png", alt: "Taras przy śródziemnomorskiej plaży w Torre del Mar" },
     ],
     ctaLabel: "Poznaj Adharę",
+    mapQuery: "Playa de Torre del Mar, Torre del Mar, Málaga, Spain",
+    areaTitle: "Torre del Mar",
+    areaDescription:
+      "Torre del Mar to nadmorskie miasteczko na Costa del Sol, zaledwie kilka minut pieszo od plaży i deptaku spacerowego. W okolicy znajdziesz świeże rybne restauracje, kawiarnie z widokiem na morze oraz codzienny rytm andaluzyjskiego życia — dalej od tłumów Malagi, ale wciąż blisko lotniska (ok. 30 minut jazdy) i atrakcji wybrzeża.",
+    faq: [
+      {
+        question: "Jak wygląda zameldowanie (check-in)?",
+        answer: "Korzystamy z systemu samodzielnego zameldowania — dostajesz kod dostępu przed przyjazdem i możesz wejść do apartamentu o dowolnej, wcześniej uzgodnionej godzinie, bez czekania na recepcję.",
+      },
+      {
+        question: "Czy jest parking?",
+        answer: "Tak, do apartamentu przypisane jest prywatne miejsce parkingowe.",
+      },
+      {
+        question: "Jak daleko do plaży?",
+        answer: "Około 8 minut pieszo do plaży Torre del Mar i nadmorskiego deptaku.",
+      },
+      {
+        question: "Czy apartament nadaje się do pracy zdalnej?",
+        answer: "Tak — szybki internet światłowodowy i spokojna okolica sprawiają, że to dobre miejsce na połączenie pracy z wypoczynkiem.",
+      },
+    ],
   },
   {
     slug: "urban-sky",
@@ -80,6 +111,28 @@ export const residences: Residence[] = [
       { src: "/assets/gallery-urban-sky/urban-sky-pool-blue-1.webp", alt: "Basen z bliska, spokojny kadr" },
     ],
     ctaLabel: "Poznaj Urban Sky",
+    mapQuery: "Málaga city centre, Málaga, Spain",
+    areaTitle: "Málaga",
+    areaDescription:
+      "Málaga to jedno z najbardziej dynamicznych miast Andaluzji — historyczne centrum, port z promami i statkami wycieczkowymi, plaże oraz scena kulturalna z Muzeum Picassa i Centre Pompidou Málaga w zasięgu krótkiego spacheru. Stąd blisko też na lotnisko oraz w głąb Costa del Sol.",
+    faq: [
+      {
+        question: "Na którym piętrze znajduje się apartament?",
+        answer: "Apartament znajduje się na 28. piętrze wieży, z panoramicznym widokiem na miasto, port i góry.",
+      },
+      {
+        question: "Czy jest dostęp do basenu na dachu?",
+        answer: "Tak, budynek ma basen rooftop z widokiem 360° na Malagę, dostępny dla gości.",
+      },
+      {
+        question: "Jak daleko do centrum i starówki?",
+        answer: "Wieża stoi w bezpośredniej bliskości centrum, większość atrakcji jest w zasięgu spaceru.",
+      },
+      {
+        question: "Czy budynek ma recepcję?",
+        answer: "Tak, dostępna jest całodobowa recepcja oraz strefy co-workingowe na terenie budynku.",
+      },
+    ],
   },
   {
     slug: "vega",
