@@ -1,0 +1,43 @@
+---
+const items = [
+  {
+    number: "01",
+    title: "Prywatność i swoboda",
+    text: "Bezkluczykowy system self check-in zapewnia pełną niezależność i komfort przyjazdu o dowolnej porze.",
+  },
+  {
+    number: "02",
+    title: "Komfort klasy premium",
+    text: "W pełni wyposażone kuchnie, starannie dobrane wyposażenie oraz prywatne miejsca parkingowe tworzą przestrzeń gotową do życia od pierwszej chwili.",
+  },
+  {
+    number: "03",
+    title: "Technologia",
+    text: "Szybki internet światłowodowy pozwala płynnie łączyć pracę zdalną z wypoczynkiem na Costa del Sol.",
+  },
+  {
+    number: "04",
+    title: "Dyskretne wsparcie",
+    text: "Nasz zespół pozostaje do dyspozycji przez cały pobyt, dbając o najwyższy standard obsługi i pełen komfort gości.",
+  },
+];
+---
+
+<section class="section experience" id="doswiadczenie">
+  <div class="section-heading compact">
+    <div>
+      <div class="section-label">Doświadczenie SAPPHIRE</div>
+      <h2>Każdy detal ma znaczenie.</h2>
+    </div>
+    <p>W SAPPHIRE Apartments luksus definiujemy poprzez wygodę, prywatność oraz jakość codziennych doświadczeń.</p>
+  </div>
+  <div class="experience-grid">
+    {items.map((item) => (
+      <div class="experience-item">
+        <span>{item.number}</span>
+        <h3>{item.title}</h3>
+        <p>{item.text}</p>
+      </div>
+    ))}
+  </div>
+</section>

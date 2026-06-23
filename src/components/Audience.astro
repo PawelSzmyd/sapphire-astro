@@ -1,0 +1,21 @@
+---
+const audience = [
+  "Goście premium podróżujący po Europie",
+  "Przedsiębiorcy pracujący zdalnie",
+  "Osoby poszukujące dłuższego pobytu w Hiszpanii",
+  "Pary szukające spokojnego azylu nad Morzem Śródziemnym",
+  "Osoby wracające regularnie na Costa del Sol",
+];
+---
+
+<section class="section audience">
+  <div class="split">
+    <h2>Dla tych, którzy wybierają świadomie.</h2>
+    <div>
+      <p class="lead">SAPPHIRE Apartments wybierają osoby ceniące prywatność, estetykę i wyjątkowe lokalizacje.</p>
+      <ul class="audience-list">
+        {audience.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>

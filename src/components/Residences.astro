@@ -1,0 +1,22 @@
+---
+// Sekcja "Rezydencje" — pętla po danych z src/data/residences.ts.
+// Dodanie 5. rezydencji w przyszłości = dopisanie obiektu w tamtym pliku.
+// Ten komponent się nie zmienia.
+
+import ResidenceCard from "./ResidenceCard.astro";
+import { residences } from "../data/residences";
+---
+
+<section class="section residences" id="rezydencje">
+  <div class="section-heading">
+    <div>
+      <div class="section-label">Nasze rezydencje</div>
+      <h2>Cztery światy. Jeden standard.</h2>
+    </div>
+    <p>Każda z naszych nieruchomości oferuje inne doświadczenie pobytu, zachowując ten sam poziom wyrafinowania, komfortu i prywatności.</p>
+  </div>
+
+  {residences.map((residence, index) => (
+    <ResidenceCard residence={residence} reverse={index % 2 === 1} />
+  ))}
+</section>

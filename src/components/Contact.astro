@@ -1,0 +1,54 @@
+---
+// Lista rezydencji w dropdownie formularza pochodzi z tych samych danych
+// co karty rezydencji — nigdy nie wyjdzie z synchronizacji.
+import { residences } from "../data/residences";
+---
+
+<section class="section contact" id="kontakt">
+  <div class="contact-intro">
+    <div class="section-label">Kontakt</div>
+    <h2>Rozpocznij swój pobyt.</h2>
+    <p>Niezależnie od tego, czy planujesz krótki pobyt, pracę zdalną w Hiszpanii czy dłuższy pobyt na Costa del Sol — jesteśmy do Twojej dyspozycji.</p>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <h3>Lokalizacja</h3>
+      <p>Costa del Sol<br />Andaluzja, Hiszpania</p>
+    </div>
+    <div>
+      <h3>Kontakt</h3>
+      <div class="contact-actions">
+        <a href="mailto:hello@sapphire-apartments.com">E-mail</a>
+        <a href="https://wa.me/" target="_blank" rel="noreferrer">WhatsApp</a>
+      </div>
+    </div>
+    <div>
+      <h3>Obsługa</h3>
+      <p>Odpowiadamy na wszystkie zapytania w ciągu 24 godzin.</p>
+    </div>
+  </div>
+  <form class="contact-form" id="contact-form" action="mailto:hello@sapphire-apartments.com" method="post" enctype="text/plain">
+    <label>
+      Imię i nazwisko
+      <input name="name" autocomplete="name" required />
+    </label>
+    <label>
+      E-mail
+      <input name="email" type="email" autocomplete="email" required />
+    </label>
+    <label>
+      Rezydencja
+      <select name="residence">
+        {residences.map((residence) => (
+          <option>{residence.name} — {residence.location}</option>
+        ))}
+        <option>Nie jestem jeszcze zdecydowany/a</option>
+      </select>
+    </label>
+    <label>
+      Wiadomość
+      <textarea name="message" rows="5" required></textarea>
+    </label>
+    <button class="button primary dark" type="submit">Wyślij zapytanie</button>
+  </form>
+</section>

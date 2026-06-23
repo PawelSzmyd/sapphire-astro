@@ -1,0 +1,48 @@
+---
+// Jedna karta rezydencji. Renderowana w pętli przez Residences.astro,
+// raz dla każdego obiektu z src/data/residences.ts.
+//
+// `reverse` odwraca układ (zdjęcie/tekst) na zmianę, tak jak w starej wersji
+// (ADHARA: zdjęcie po lewej, URBAN SKY: zdjęcie po prawej, itd.)
+
+import type { Residence } from "../data/residences";
+
+interface Props {
+  residence: Residence;
+  reverse: boolean;
+}
+
+const { residence, reverse } = Astro.props;
+const isComingSoon = residence.status === "coming-soon";
+---
+
+<article class={`residence feature ${reverse ? "reverse" : ""} ${isComingSoon ? "coming-soon" : ""}`}>
+  {isComingSoon ? (
+    <div class="residence-image placeholder" role="img" aria-label={`${residence.name} — rezydencja w przygotowaniu`}>
+      <span class="placeholder-name">{residence.name}</span>
+    </div>
+  ) : (
+    <div
+      class="residence-image"
+      style={`background-image: url('${residence.image}'); background-position: 50% center;`}
+      role="img"
+      aria-label={residence.imageAlt}
+    >
+    </div>
+  )}
+
+  <div class="residence-body">
+    {isComingSoon && <span class="status-badge">Wkrótce</span>}
+    <p class="overline">{residence.name} — {residence.location}</p>
+    <h3>{residence.tagline}</h3>
+    {residence.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+
+    {residence.amenities.length > 0 && (
+      <ul class="amenities">
+        {residence.amenities.map((item) => <li>{item}</li>)}
+      </ul>
+    )}
+
+    <a class="text-link" href="#kontakt">{residence.ctaLabel}</a>
+  </div>
+</article>
