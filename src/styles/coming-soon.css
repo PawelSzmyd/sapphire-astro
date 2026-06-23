@@ -31,6 +31,19 @@
   color: var(--gold);
 }
 
+.status-badge.on-image {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: rgba(17, 22, 26, 0.78);
+  backdrop-filter: blur(4px);
+  border-color: var(--gold);
+}
+
+.residence-image {
+  position: relative;
+}
+
 .residence.coming-soon .residence-body p:last-of-type {
   margin-bottom: 28px;
 }

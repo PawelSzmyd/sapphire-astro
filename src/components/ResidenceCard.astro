@@ -14,20 +14,22 @@ interface Props {
 
 const { residence, reverse } = Astro.props;
 const isComingSoon = residence.status === "coming-soon";
+const hasImage = Boolean(residence.image);
 ---
 
 <article class={`residence feature ${reverse ? "reverse" : ""} ${isComingSoon ? "coming-soon" : ""}`}>
-  {isComingSoon ? (
-    <div class="residence-image placeholder" role="img" aria-label={`${residence.name} — rezydencja w przygotowaniu`}>
-      <span class="placeholder-name">{residence.name}</span>
-    </div>
-  ) : (
+  {hasImage ? (
     <div
       class="residence-image"
       style={`background-image: url('${residence.image}'); background-position: 50% center;`}
       role="img"
       aria-label={residence.imageAlt}
     >
+      {isComingSoon && <span class="status-badge on-image">Wkrótce</span>}
+    </div>
+  ) : (
+    <div class="residence-image placeholder" role="img" aria-label={`${residence.name} — rezydencja w przygotowaniu`}>
+      <span class="placeholder-name">{residence.name}</span>
     </div>
   )}
 
