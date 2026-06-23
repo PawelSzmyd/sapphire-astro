@@ -58,8 +58,8 @@ export const residences: Residence[] = [
       "Nowoczesna architektura premium",
       "Doskonała lokalizacja w centrum miasta",
     ],
-    image: "/assets/urban-sky-building.jpg",
-    imageAlt: "Panoramiczny widok na wieże Urban Sky w Maladze",
+    image: "/assets/gallery-urban-sky/urban-sky-pool-rooftop-1.webp",
+    imageAlt: "Widok z drona na basen na dachu URBAN SKY z panoramą Málagi i portu",
     ctaLabel: "Poznaj Urban Sky",
   },
   {
