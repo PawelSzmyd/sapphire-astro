@@ -36,8 +36,8 @@ export const residences: Residence[] = [
       "Szybki internet światłowodowy",
       "Idealna przestrzeń do dłuższych pobytów",
     ],
-    image: "/assets/adhara-terrace-wine.webp",
-    imageAlt: "Taras Adhara z widokiem na basen, kieliszkami wina i powitalną kartą SAPPHIRE",
+    image: "/assets/adhara-living-kitchen.webp",
+    imageAlt: "Otwarta przestrzeń kuchenno-dzienna w rezydencji Adhara",
     ctaLabel: "Poznaj Adharę",
   },
   {
