@@ -1,36 +1,40 @@
 ---
-// Astro generuje jedną statyczną podstronę dla każdej "live" rezydencji
-// z src/data/residences.ts, np. /rezydencje/adhara, /rezydencje/urban-sky.
-// Dodanie kolejnej "live" rezydencji w przyszłości automatycznie doda nową podstronę —
-// nie trzeba tworzyć nowego pliku.
+// Astro generuje jedną statyczną podstronę dla KAŻDEJ rezydencji z src/data/residences.ts —
+// niezależnie od statusu (live / coming-soon). Dla "coming-soon" treść jest uboższa
+// (brak galerii/mapy/FAQ, tylko nagłówek + opis + CTA "Dołącz do listy prywatnej"),
+// dokładnie tak jak dla ADHARY na początku — wystarczy uzupełnić dane w residences.ts,
+// żeby strona "ożyła" bez zmian w tym szablonie.
 
 import Layout from "../../layouts/Layout.astro";
 import { residences } from "../../data/residences";
+import AmenityIcon from "../../components/AmenityIcon.astro";
 import "../../styles/residence-detail.css";
 
 export function getStaticPaths() {
-  return residences
-    .filter((residence) => residence.status === "live")
-    .map((residence) => ({
-      params: { slug: residence.slug },
-      props: { residence },
-    }));
+  return residences.map((residence) => ({
+    params: { slug: residence.slug },
+    props: { residence },
+  }));
 }
 
 const { residence } = Astro.props;
+const isLive = residence.status === "live";
 const heroImage = residence.gallery?.[0]?.src ?? residence.image;
 ---
 
 <Layout title={`${residence.name} — SAPPHIRE Apartments`} description={residence.tagline}>
-  <section class="residence-hero" style={`background-image: url('${heroImage}');`}>
+  <section class="residence-hero" style={heroImage ? `background-image: url('${heroImage}');` : ""}>
     <div class="residence-hero-content">
-      <a class="breadcrumb" href="/#rezydencje">← Wszystkie rezydencje</a>
-      <p class="overline">{residence.name} — {residence.location}</p>
+      <a class="breadcrumb" href="/">← Strona główna</a>
+      <p class="overline">
+        {residence.name} — {residence.location}
+        {!isLive && <span class="status-badge inline">Wkrótce</span>}
+      </p>
       <h1>{residence.tagline}</h1>
     </div>
   </section>
 
-  {residence.gallery && residence.gallery.length > 0 && (
+  {isLive && residence.gallery && residence.gallery.length > 0 && (
     <div class="gallery-grid" id="gallery">
       {residence.gallery.map((image, index) => (
         <figure>
@@ -55,13 +59,18 @@ const heroImage = residence.gallery?.[0]?.src ?? residence.image;
     </div>
 
     {residence.amenities.length > 0 && (
-      <ul class="amenities">
-        {residence.amenities.map((item) => <li>{item}</li>)}
-      </ul>
+      <div class="amenities-grid">
+        {residence.amenities.map((item) => (
+          <div class="amenity-pill">
+            <AmenityIcon label={item} />
+            <span>{item}</span>
+          </div>
+        ))}
+      </div>
     )}
   </div>
 
-  {residence.mapQuery && (
+  {isLive && residence.mapQuery && (
     <section class="residence-location">
       <div class="residence-location-text">
         <div class="section-label">Lokalizacja</div>
@@ -80,7 +89,7 @@ const heroImage = residence.gallery?.[0]?.src ?? residence.image;
     </section>
   )}
 
-  {residence.faq && residence.faq.length > 0 && (
+  {isLive && residence.faq && residence.faq.length > 0 && (
     <section class="residence-faq">
       <div class="section-label">Najczęściej zadawane pytania</div>
       <h2>FAQ</h2>
@@ -96,10 +105,21 @@ const heroImage = residence.gallery?.[0]?.src ?? residence.image;
   )}
 
   <div class="residence-cta-block">
-    <a class="button primary dark" href="/#kontakt">Zarezerwuj {residence.name}</a>
+    {isLive ? (
+      <div class="cta-row">
+        <a class="button primary dark" href="/#kontakt">Zarezerwuj {residence.name}</a>
+        {residence.bookingUrl && (
+          <a class="button secondary" href={residence.bookingUrl} target="_blank" rel="noopener noreferrer">
+            Rezerwuj i zapłać na Booking.com
+          </a>
+        )}
+      </div>
+    ) : (
+      <a class="button primary dark" href="/#kontakt">Dołącz do listy prywatnej</a>
+    )}
   </div>
 
-  {residence.gallery && residence.gallery.length > 0 && (
+  {isLive && residence.gallery && residence.gallery.length > 0 && (
     <div class="lightbox" id="lightbox" aria-hidden="true">
       <button class="lightbox-close" id="lightbox-close" aria-label="Zamknij powiększenie">✕</button>
       <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Poprzednie zdjęcie">‹</button>

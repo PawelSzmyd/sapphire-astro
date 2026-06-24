@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Philosophy from "../components/Philosophy.astro";
+import Experience from "../components/Experience.astro";
+import Audience from "../components/Audience.astro";
+import "../styles/residence-detail.css";
+---
+
+<Layout title="O SAPPHIRE Apartments" description="Poznaj filozofię i standard SAPPHIRE Apartments — kolekcji rezydencji premium na Costa del Sol.">
+  <section class="residence-hero" style="background-image: url('/assets/malaga-sun.jpg');">
+    <div class="residence-hero-content">
+      <a class="breadcrumb" href="/">← Strona główna</a>
+      <p class="overline">SAPPHIRE Apartments</p>
+      <h1>Residences of Rare Distinction.</h1>
+    </div>
+  </section>
+
+  <Philosophy />
+  <Experience />
+  <Audience />
+</Layout>

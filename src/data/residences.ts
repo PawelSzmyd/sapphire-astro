@@ -29,6 +29,7 @@ export interface Residence {
   areaTitle?: string; // np. "Torre del Mar"
   areaDescription?: string; // krótki opis okolicy
   faq?: FaqItem[];
+  bookingUrl?: string; // link do zewnętrznej rezerwacji (np. Booking.com)
   ctaLabel: string;
 }
 
@@ -59,6 +60,7 @@ export const residences: Residence[] = [
       { src: "/assets/adhara-bedroom.webp", alt: "Sypialnia rezydencji Adhara z sygnaturową pościelą SAPPHIRE" },
       { src: "/assets/adhara-terrace-photo.png", alt: "Taras przy śródziemnomorskiej plaży w Torre del Mar" },
     ],
+    bookingUrl: "https://www.booking.com/hotel/es/residencial-adhara-iii.pl.html",
     ctaLabel: "Poznaj Adharę",
     mapQuery: "Playa de Torre del Mar, Torre del Mar, Málaga, Spain",
     areaTitle: "Torre del Mar",
