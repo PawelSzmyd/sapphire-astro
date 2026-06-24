@@ -1,17 +1,69 @@
 ---
-// Górne menu nawigacyjne — identyczne jak w starej wersji.
+// Górne menu nawigacyjne. Na desktopie linki są widoczne w linii (jak wcześniej).
+// Poniżej 980px chowamy je za przyciskiem hamburgera — bez tego mobile nie miało
+// żadnej nawigacji (.nav-links { display:none } bez przełącznika).
 ---
 
 <header class="site-header" aria-label="Główna nawigacja">
   <a class="brand" href="/" aria-label="SAPPHIRE Apartments">
     <img src="/assets/sapphire-logo-white.svg" alt="SAPPHIRE Apartments" />
   </a>
-  <nav class="nav-links">
+
+  <nav class="nav-links" id="nav-links">
     <a href="/o-sapphire-apartments">O Sapphire Apartments</a>
     <a href="/rezydencje/adhara">Adhara</a>
     <a href="/rezydencje/urban-sky">Urban Sky</a>
     <a href="/rezydencje/vega">Vega</a>
     <a href="/#kontakt">Kontakt</a>
   </nav>
+
   <a class="header-action" href="/#kontakt">Zarezerwuj</a>
+
+  <button class="nav-toggle" id="nav-toggle" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobile-nav">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </header>
+
+<nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <a href="/o-sapphire-apartments">O Sapphire Apartments</a>
+  <a href="/rezydencje/adhara">Adhara</a>
+  <a href="/rezydencje/urban-sky">Urban Sky</a>
+  <a href="/rezydencje/vega">Vega</a>
+  <a href="/#kontakt">Kontakt</a>
+  <a href="/#kontakt" class="mobile-nav-cta">Zarezerwuj</a>
+</nav>
+
+<script>
+  const toggle = document.getElementById("nav-toggle");
+  const mobileNav = document.getElementById("mobile-nav");
+
+  function closeMenu() {
+    mobileNav?.classList.remove("open");
+    toggle?.classList.remove("open");
+    toggle?.setAttribute("aria-expanded", "false");
+    mobileNav?.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  function openMenu() {
+    mobileNav?.classList.add("open");
+    toggle?.classList.add("open");
+    toggle?.setAttribute("aria-expanded", "true");
+    mobileNav?.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  toggle?.addEventListener("click", () => {
+    if (mobileNav?.classList.contains("open")) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  mobileNav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+</script>
