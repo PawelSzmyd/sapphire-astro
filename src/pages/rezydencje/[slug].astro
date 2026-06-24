@@ -48,6 +48,7 @@ const heroImage = residence.gallery?.[0]?.src ?? residence.image;
             role="button"
             aria-label={`Powiększ zdjęcie: ${image.alt}`}
           />
+          {image.caption && <figcaption>{image.caption}</figcaption>}
         </figure>
       ))}
     </div>
@@ -59,14 +60,17 @@ const heroImage = residence.gallery?.[0]?.src ?? residence.image;
     </div>
 
     {residence.amenities.length > 0 && (
-      <div class="amenities-grid">
-        {residence.amenities.map((item) => (
-          <div class="amenity-pill">
-            <AmenityIcon label={item} />
-            <span>{item}</span>
-          </div>
-        ))}
-      </div>
+      <>
+        <h2 class="amenities-heading">Udogodnienia</h2>
+        <div class="amenities-grid">
+          {residence.amenities.map((item) => (
+            <div class="amenity-pill">
+              <AmenityIcon label={item} />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+      </>
     )}
   </div>
 

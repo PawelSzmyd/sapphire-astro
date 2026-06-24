@@ -7,6 +7,7 @@ export type ResidenceStatus = "live" | "coming-soon";
 export interface GalleryImage {
   src: string;
   alt: string;
+  caption?: string; // krótka etykieta widoczna pod zdjęciem, np. "Salon", "Sypialnia"
 }
 
 export interface FaqItem {
@@ -55,10 +56,10 @@ export const residences: Residence[] = [
     image: "/assets/adhara-living-kitchen.webp",
     imageAlt: "Otwarta przestrzeń kuchenno-dzienna w rezydencji Adhara",
     gallery: [
-      { src: "/assets/adhara-living-kitchen.webp", alt: "Otwarta przestrzeń kuchenno-dzienna w rezydencji Adhara" },
-      { src: "/assets/adhara-terrace-wine.webp", alt: "Taras Adhara z widokiem na basen, kieliszkami wina i powitalną kartą SAPPHIRE" },
-      { src: "/assets/adhara-bedroom.webp", alt: "Sypialnia rezydencji Adhara z sygnaturową pościelą SAPPHIRE" },
-      { src: "/assets/adhara-terrace-photo.png", alt: "Taras przy śródziemnomorskiej plaży w Torre del Mar" },
+      { src: "/assets/adhara-living-kitchen.webp", alt: "Otwarta przestrzeń kuchenno-dzienna w rezydencji Adhara", caption: "Salon i kuchnia" },
+      { src: "/assets/adhara-terrace-wine.webp", alt: "Taras Adhara z widokiem na basen, kieliszkami wina i powitalną kartą SAPPHIRE", caption: "Taras" },
+      { src: "/assets/adhara-bedroom.webp", alt: "Sypialnia rezydencji Adhara z sygnaturową pościelą SAPPHIRE", caption: "Sypialnia" },
+      { src: "/assets/adhara-terrace-photo.png", alt: "Taras przy śródziemnomorskiej plaży w Torre del Mar", caption: "Taras z widokiem na plażę" },
     ],
     bookingUrl: "https://www.booking.com/hotel/es/residencial-adhara-iii.pl.html",
     ctaLabel: "Poznaj Adharę",
@@ -106,11 +107,11 @@ export const residences: Residence[] = [
     image: "/assets/gallery-urban-sky/urban-sky-pool-rooftop-1.webp",
     imageAlt: "Widok z drona na basen na dachu URBAN SKY z panoramą Málagi i portu",
     gallery: [
-      { src: "/assets/gallery-urban-sky/urban-sky-pool-rooftop-1.webp", alt: "Widok z drona na basen na dachu URBAN SKY z panoramą Málagi i portu" },
-      { src: "/assets/gallery-urban-sky/urban-sky-jacuzzi-1.webp", alt: "Jacuzzi na dachu z widokiem na stare miasto i zamek" },
-      { src: "/assets/gallery-urban-sky/urban-sky-pool-sunset-1.webp", alt: "Basen o zachodzie słońca z palmą" },
-      { src: "/assets/gallery-urban-sky/urban-sky-pool-loungers-1.webp", alt: "Leżaki i strefa relaksu przy basenie na dachu" },
-      { src: "/assets/gallery-urban-sky/urban-sky-pool-blue-1.webp", alt: "Basen z bliska, spokojny kadr" },
+      { src: "/assets/gallery-urban-sky/urban-sky-pool-rooftop-1.webp", alt: "Widok z drona na basen na dachu URBAN SKY z panoramą Málagi i portu", caption: "Basen na dachu" },
+      { src: "/assets/gallery-urban-sky/urban-sky-jacuzzi-1.webp", alt: "Jacuzzi na dachu z widokiem na stare miasto i zamek", caption: "Jacuzzi" },
+      { src: "/assets/gallery-urban-sky/urban-sky-pool-sunset-1.webp", alt: "Basen o zachodzie słońca z palmą", caption: "Basen o zachodzie słońca" },
+      { src: "/assets/gallery-urban-sky/urban-sky-pool-loungers-1.webp", alt: "Leżaki i strefa relaksu przy basenie na dachu", caption: "Strefa relaksu" },
+      { src: "/assets/gallery-urban-sky/urban-sky-pool-blue-1.webp", alt: "Basen z bliska, spokojny kadr", caption: "Basen" },
     ],
     ctaLabel: "Poznaj Urban Sky",
     mapQuery: "Málaga city centre, Málaga, Spain",
