@@ -230,6 +230,7 @@ a {
 
 .hero {
   position: relative;
+  width: 100%;
   min-height: 92vh;
   display: flex;
   align-items: flex-end;
@@ -1036,6 +1037,11 @@ h2 {
 
   .hero {
     min-height: 94vh;
+  }
+
+  .hero-media {
+    animation: none;
+    transform: scale(1.02);
   }
 
   .hero-content {
