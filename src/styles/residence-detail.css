@@ -343,3 +343,14 @@
   gap: 16px;
   justify-content: center;
 }
+
+.cta-row .button.secondary {
+  color: var(--sapphire-deep);
+  border: 1px solid var(--sapphire-deep);
+}
+
+.cta-row .button.secondary:hover {
+  background: var(--sapphire-deep);
+  color: var(--white);
+  border-color: var(--sapphire-deep);
+}
