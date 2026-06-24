@@ -45,6 +45,7 @@
     toggle?.setAttribute("aria-expanded", "false");
     mobileNav?.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
   }
 
   function openMenu() {
@@ -53,6 +54,7 @@
     toggle?.setAttribute("aria-expanded", "true");
     mobileNav?.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
   }
 
   toggle?.addEventListener("click", () => {
