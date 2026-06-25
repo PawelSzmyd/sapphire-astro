@@ -163,8 +163,8 @@ export const residences: Residence[] = [
       "Dramatyczne wybrzeże i złote światło zachodu słońca — rezydencja stworzona dla wyjątkowych chwil.",
     ],
     amenities: [],
-    image: "/assets/lumare-placeholder-sunset.webp",
-    imageAlt: "Zdjęcie tymczasowe — zachód słońca nad morzem z palmami",
+    image: "/assets/lumare-placeholder-night.webp",
+    imageAlt: "Zdjęcie tymczasowe — nocna panorama miasta z lotu ptaka",
     ctaLabel: "Dołącz do listy prywatnej",
   },
 ];

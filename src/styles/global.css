@@ -50,7 +50,7 @@ a {
   gap: 24px;
   padding: 22px clamp(18px, 4vw, 56px);
   color: var(--white);
-  background: linear-gradient(180deg, rgba(5, 20, 25, 0.58), rgba(5, 20, 25, 0));
+  background: #061d25;
 }
 
 .brand {
@@ -745,7 +745,7 @@ h2 {
 .footer-tagline {
   margin-top: 18px;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
   letter-spacing: 0.02em;
   color: rgba(255, 253, 248, 0.86);
 }
@@ -762,23 +762,24 @@ h2 {
 .footer-col {
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 9px;
 }
 
 .footer-col h4 {
-  margin: 0 0 4px;
-  font-family: Montserrat, Arial, sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  margin: 0 0 6px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
   color: var(--gold);
 }
 
 .footer-col a,
 .footer-static {
-  font-size: 0.9rem;
-  color: rgba(255, 253, 248, 0.74);
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+  color: rgba(255, 253, 248, 0.68);
 }
 
 .footer-col a:hover {
@@ -811,12 +812,12 @@ h2 {
   }
 
   .footer-col h4 {
-    font-size: 0.66rem;
+    font-size: 0.95rem;
   }
 
   .footer-col a,
   .footer-static {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
   }
 
   .footer-bottom {
