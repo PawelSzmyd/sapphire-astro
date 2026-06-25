@@ -806,9 +806,17 @@ h2 {
 
 @media (max-width: 720px) {
   .footer-columns {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    text-align: center;
+    gap: 24px;
+    text-align: left;
+  }
+
+  .footer-col h4 {
+    font-size: 0.66rem;
+  }
+
+  .footer-col a,
+  .footer-static {
+    font-size: 0.8rem;
   }
 
   .footer-bottom {
