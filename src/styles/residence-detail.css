@@ -16,7 +16,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(3, 14, 19, 0.18) 0%, rgba(3, 14, 19, 0.74) 100%);
+  background: linear-gradient(180deg, rgba(13, 11, 8, 0.2) 0%, rgba(13, 11, 8, 0.78) 100%);
 }
 
 .residence-hero-content {

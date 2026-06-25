@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(160deg, var(--sapphire-deep) 0%, #11161a 100%);
+  background: linear-gradient(160deg, var(--sapphire-deep) 0%, var(--graphite) 100%);
 }
 
 .residence-image.placeholder .placeholder-name {
