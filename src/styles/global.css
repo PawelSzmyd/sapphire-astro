@@ -751,10 +751,10 @@ h2 {
 }
 
 .footer-columns {
-  max-width: 1180px;
+  max-width: 640px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 36px;
   padding-bottom: clamp(36px, 5vw, 56px);
 }
