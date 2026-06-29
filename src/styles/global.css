@@ -51,8 +51,7 @@ a {
   gap: 24px;
   padding: 22px clamp(18px, 4vw, 56px);
   color: var(--white);
-  background: var(--graphite);
-  border-bottom: 1px solid rgba(184, 144, 88, 0.25);
+  background: linear-gradient(180deg, rgba(22, 20, 15, 0.52), rgba(22, 20, 15, 0));
 }
 
 .brand {
