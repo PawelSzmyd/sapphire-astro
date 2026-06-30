@@ -1,5 +1,5 @@
 ---
-// Carousel głównych zdjęć apartamentów z efektem zoom-blur i kreatywnym tekstem.
+// Carousel głównych zdjęć apartamentów z efektem zoom-out + blur-to-sharp
 import { residences } from "../data/residences";
 
 const liveResidences = residences.filter(r => r.status === "live");
@@ -12,8 +12,11 @@ const liveResidences = residences.filter(r => r.status === "live");
       <div 
         class={`carousel-slide ${index === 0 ? 'active' : ''}`}
         data-index={index}
-        style={heroImage ? `background-image: url('${heroImage}');` : ""}
       >
+        <div 
+          class="carousel-image"
+          style={heroImage ? `background-image: url('${heroImage}');` : ""}
+        ></div>
         <div class="carousel-overlay"></div>
         <div class="carousel-content">
           <h2 class="carousel-title">{residence.name}</h2>
@@ -52,19 +55,49 @@ const liveResidences = residences.filter(r => r.status === "live");
 .carousel-slide {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   opacity: 0;
   z-index: 1;
   display: flex;
   align-items: flex-end;
-  transition: opacity 800ms ease;
+  pointer-events: none;
 }
 
 .carousel-slide.active {
   opacity: 1;
   z-index: 2;
+  pointer-events: auto;
+}
+
+/* Zdjęcie z efektem zoom-out + blur-to-sharp */
+.carousel-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.carousel-slide.active .carousel-image {
+  animation: zoomOutBlur 3.5s ease-out forwards;
+}
+
+@keyframes zoomOutBlur {
+  0% {
+    transform: scale(1.15);
+    filter: blur(12px);
+    opacity: 1;
+  }
+  40% {
+    filter: blur(8px);
+  }
+  70% {
+    filter: blur(3px);
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0);
+    opacity: 1;
+  }
 }
 
 .carousel-overlay {
@@ -80,13 +113,13 @@ const liveResidences = residences.filter(r => r.status === "live");
   color: var(--white);
   padding: clamp(56px, 12vw, 120px) clamp(18px, 6vw, 86px);
   width: 100%;
-  animation: slideContentIn 1000ms ease-out 300ms both;
+  animation: slideContentIn 1200ms cubic-bezier(0.34, 1.56, 0.64, 1) 1400ms both;
 }
 
 @keyframes slideContentIn {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -100,23 +133,50 @@ const liveResidences = residences.filter(r => r.status === "live");
   font-size: clamp(2.2rem, 6vw, 4rem);
   font-weight: 500;
   line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .carousel-location {
   margin: 0 0 12px;
   font-size: 1rem;
   color: var(--gold);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  animation: slideLocationIn 1000ms ease-out 1600ms both;
+}
+
+@keyframes slideLocationIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .carousel-tagline {
   margin: 0;
   font-size: 1.1rem;
   color: rgba(255, 253, 248, 0.9);
-  max-width: 480px;
-  line-height: 1.6;
+  max-width: 520px;
+  line-height: 1.7;
+  animation: slideTaglineIn 1000ms ease-out 1800ms both;
 }
 
+@keyframes slideTaglineIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Witaj message z kreatywną animacją */
 .carousel-welcome {
   position: absolute;
   inset: 0;
@@ -127,14 +187,14 @@ const liveResidences = residences.filter(r => r.status === "live");
   text-align: center;
   pointer-events: none;
   opacity: 0;
-  animation: welcomeFadeIn 2000ms ease-out 1000ms both;
+  animation: welcomeFadeIn 1800ms ease-out 2800ms both;
 }
 
 @keyframes welcomeFadeIn {
   0% {
     opacity: 0;
   }
-  30% {
+  25% {
     opacity: 0;
   }
   100% {
@@ -144,13 +204,45 @@ const liveResidences = residences.filter(r => r.status === "live");
 
 .welcome-inner {
   color: var(--white);
-  animation: welcomeSlideUp 800ms ease-out 1300ms both;
+  animation: welcomeScaleIn 900ms cubic-bezier(0.34, 1.56, 0.64, 1) 3200ms both;
 }
 
-@keyframes welcomeSlideUp {
+@keyframes welcomeScaleIn {
   from {
     opacity: 0;
-    transform: translateY(32px);
+    transform: scale(0.8) translateY(32px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+.welcome-text {
+  margin: 0 0 20px;
+  font-size: clamp(0.9rem, 3vw, 1.3rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 253, 248, 0.75);
+  animation: charFadeIn 600ms ease-out 3400ms both;
+}
+
+.welcome-brand {
+  margin: 0 0 24px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.8rem, 8vw, 5.8rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  animation: textReveal 1100ms ease-out 3500ms both;
+}
+
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -158,31 +250,37 @@ const liveResidences = residences.filter(r => r.status === "live");
   }
 }
 
-.welcome-text {
-  margin: 0 0 16px;
-  font-size: clamp(1rem, 3vw, 1.4rem);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255, 253, 248, 0.8);
-}
-
-.welcome-brand {
-  margin: 0 0 18px;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(2.8rem, 8vw, 5.5rem);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.05em;
-}
-
 .welcome-slogan {
   margin: 0;
-  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-size: clamp(0.95rem, 2.5vw, 1.7rem);
   color: var(--gold);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   font-style: italic;
+  font-weight: 300;
+  animation: sloganFadeIn 700ms ease-out 3800ms both;
 }
 
+@keyframes sloganFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes charFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Nawigacja */
 .carousel-nav {
   position: absolute;
   bottom: clamp(28px, 5vh, 56px);
@@ -196,25 +294,28 @@ const liveResidences = residences.filter(r => r.status === "live");
 .carousel-dot {
   width: 40px;
   height: 40px;
-  border: 1px solid rgba(255, 253, 248, 0.4);
+  border: 1.5px solid rgba(255, 253, 248, 0.45);
   border-radius: 50%;
   background: transparent;
-  color: rgba(255, 253, 248, 0.6);
-  font-size: 0.8rem;
-  font-weight: 600;
+  color: rgba(255, 253, 248, 0.65);
+  font-size: 0.75rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 300ms ease;
+  transition: all 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  letter-spacing: 0.05em;
 }
 
 .carousel-dot:hover {
   border-color: var(--gold);
   color: var(--gold);
+  transform: scale(1.1);
 }
 
 .carousel-dot.active {
   background: var(--gold);
   border-color: var(--gold);
   color: var(--graphite);
+  box-shadow: 0 0 18px rgba(184, 144, 88, 0.4);
 }
 
 @media (max-width: 720px) {
@@ -227,7 +328,7 @@ const liveResidences = residences.filter(r => r.status === "live");
   }
 
   .carousel-location {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .carousel-tagline {
@@ -238,6 +339,14 @@ const liveResidences = residences.filter(r => r.status === "live");
     font-size: clamp(2.2rem, 6.5vw, 3.8rem);
   }
 
+  .welcome-text {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+  }
+
+  .welcome-slogan {
+    font-size: clamp(0.85rem, 2vw, 1.2rem);
+  }
+
   .carousel-nav {
     bottom: clamp(16px, 3vh, 32px);
     gap: 8px;
@@ -246,7 +355,7 @@ const liveResidences = residences.filter(r => r.status === "live");
   .carousel-dot {
     width: 32px;
     height: 32px;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 }
 </style>
@@ -256,30 +365,26 @@ const liveResidences = residences.filter(r => r.status === "live");
   const slides = document.querySelectorAll(".carousel-slide");
   const dots = document.querySelectorAll(".carousel-dot");
   const totalSlides = slides.length;
+  let autoplayTimeout: ReturnType<typeof setTimeout> | null = null;
 
   function showSlide(index: number) {
-    // Ukryj wszystkie
+    // Wyłącz poprzednie
     slides.forEach((slide) => slide.classList.remove("active"));
     dots.forEach((dot) => dot.classList.remove("active"));
 
-    // Pokaż wybraną
+    // Pokaż nowe
     currentIndex = index % totalSlides;
     slides[currentIndex].classList.add("active");
     dots[currentIndex].classList.add("active");
 
-    // Restartuj carousel po ostatnim slajdzie
-    if (currentIndex === totalSlides - 1) {
-      setTimeout(() => {
-        showSlide(0);
-      }, 5000);
-    } else {
-      setTimeout(() => {
-        showSlide(currentIndex + 1);
-      }, 5000);
-    }
+    // Zaplanuj następne
+    if (autoplayTimeout) clearTimeout(autoplayTimeout);
+    autoplayTimeout = setTimeout(() => {
+      showSlide(currentIndex + 1);
+    }, 6500); // Całe sekwencja animacji = ~6.5s
   }
 
-  // Event listenery do punktów nawigacji
+  // Kontrola nawigacji
   dots.forEach((dot) => {
     dot.addEventListener("click", () => {
       const index = parseInt(dot.getAttribute("data-slide") || "0");
@@ -287,6 +392,6 @@ const liveResidences = residences.filter(r => r.status === "live");
     });
   });
 
-  // Automatyczne przełączanie
+  // Start
   showSlide(0);
 </script>
