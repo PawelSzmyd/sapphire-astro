@@ -58,6 +58,8 @@ a {
   display: inline-flex;
   width: clamp(150px, 17vw, 230px);
   line-height: 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
 }
 
 .brand img {
