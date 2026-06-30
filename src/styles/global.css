@@ -51,7 +51,7 @@ a {
   gap: 24px;
   padding: 22px clamp(18px, 4vw, 56px);
   color: var(--white);
-  background: var(--gold);
+  background: linear-gradient(180deg, rgba(22, 20, 15, 0.52), rgba(22, 20, 15, 0));
 }
 
 .brand {
@@ -59,7 +59,7 @@ a {
   width: clamp(150px, 17vw, 230px);
   line-height: 0;
   padding-bottom: 8px;
-  border-bottom: 2px solid var(--graphite);
+  border-bottom: 2px solid var(--gold);
 }
 
 .brand img {
@@ -87,7 +87,6 @@ a {
 .nav-links a {
   position: relative;
   padding-bottom: 6px;
-  color: var(--graphite);
 }
 
 .nav-links a::after {
@@ -97,7 +96,7 @@ a {
   right: 0;
   bottom: 0;
   height: 1px;
-  background: var(--graphite);
+  background: var(--gold);
   opacity: 0;
   transform: scaleX(0.35);
   transform-origin: center;
@@ -116,21 +115,20 @@ a {
 
 .header-action:hover {
   opacity: 1;
-  background: var(--graphite);
-  border-color: var(--graphite);
-  color: var(--gold);
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--graphite);
 }
 
 .header-action {
   justify-self: end;
   padding: 11px 17px;
-  border: 1px solid var(--graphite);
+  border: 1px solid var(--gold);
   border-radius: 8px;
   font-size: 0.74rem;
   font-weight: 600;
   letter-spacing: 0.11em;
   text-transform: uppercase;
-  color: var(--graphite);
 }
 
 /* --- Przycisk hamburgera (widoczny tylko < 980px) --- */
