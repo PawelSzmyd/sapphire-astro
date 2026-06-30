@@ -1,0 +1,292 @@
+---
+// Carousel głównych zdjęć apartamentów z efektem zoom-blur i kreatywnym tekstem.
+import { residences } from "../data/residences";
+
+const liveResidences = residences.filter(r => r.status === "live");
+---
+
+<section class="hero-carousel" aria-label="Galeria apartamentów SAPPHIRE">
+  {liveResidences.map((residence, index) => {
+    const heroImage = residence.image || residence.gallery?.[0]?.src;
+    return (
+      <div 
+        class={`carousel-slide ${index === 0 ? 'active' : ''}`}
+        data-index={index}
+        style={heroImage ? `background-image: url('${heroImage}');` : ""}
+      >
+        <div class="carousel-overlay"></div>
+        <div class="carousel-content">
+          <h2 class="carousel-title">{residence.name}</h2>
+          <p class="carousel-location">{residence.location}</p>
+          <p class="carousel-tagline">{residence.tagline}</p>
+        </div>
+      </div>
+    );
+  })}
+
+  <div class="carousel-welcome">
+    <div class="welcome-inner">
+      <p class="welcome-text">Witaj w</p>
+      <h1 class="welcome-brand">SAPPHIRE APARTMENTS</h1>
+      <p class="welcome-slogan">Residences of Rare Distinction.</p>
+    </div>
+  </div>
+
+  <div class="carousel-nav">
+    <button class="carousel-dot" data-slide="0" aria-label="Adhara">1</button>
+    <button class="carousel-dot" data-slide="1" aria-label="Urban Sky">2</button>
+    <button class="carousel-dot" data-slide="2" aria-label="Vega">3</button>
+    <button class="carousel-dot" data-slide="3" aria-label="Lumare">4</button>
+  </div>
+</section>
+
+<style>
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  transition: opacity 800ms ease;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.carousel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(22, 20, 15, 0.3) 0%, rgba(22, 20, 15, 0.7) 100%);
+  z-index: 1;
+}
+
+.carousel-content {
+  position: relative;
+  z-index: 2;
+  color: var(--white);
+  padding: clamp(56px, 12vw, 120px) clamp(18px, 6vw, 86px);
+  width: 100%;
+  animation: slideContentIn 1000ms ease-out 300ms both;
+}
+
+@keyframes slideContentIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.carousel-title {
+  margin: 0 0 8px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.carousel-location {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+}
+
+.carousel-tagline {
+  margin: 0;
+  font-size: 1.1rem;
+  color: rgba(255, 253, 248, 0.9);
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+.carousel-welcome {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  animation: welcomeFadeIn 2000ms ease-out 1000ms both;
+}
+
+@keyframes welcomeFadeIn {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.welcome-inner {
+  color: var(--white);
+  animation: welcomeSlideUp 800ms ease-out 1300ms both;
+}
+
+@keyframes welcomeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-text {
+  margin: 0 0 16px;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 253, 248, 0.8);
+}
+
+.welcome-brand {
+  margin: 0 0 18px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.welcome-slogan {
+  margin: 0;
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  color: var(--gold);
+  letter-spacing: 0.02em;
+  font-style: italic;
+}
+
+.carousel-nav {
+  position: absolute;
+  bottom: clamp(28px, 5vh, 56px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  gap: 12px;
+}
+
+.carousel-dot {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 253, 248, 0.4);
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(255, 253, 248, 0.6);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.carousel-dot:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.carousel-dot.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--graphite);
+}
+
+@media (max-width: 720px) {
+  .carousel-content {
+    padding: clamp(40px, 8vw, 80px) clamp(16px, 5vw, 56px);
+  }
+
+  .carousel-title {
+    font-size: clamp(1.8rem, 5.5vw, 2.8rem);
+  }
+
+  .carousel-location {
+    font-size: 0.9rem;
+  }
+
+  .carousel-tagline {
+    font-size: 0.95rem;
+  }
+
+  .welcome-brand {
+    font-size: clamp(2.2rem, 6.5vw, 3.8rem);
+  }
+
+  .carousel-nav {
+    bottom: clamp(16px, 3vh, 32px);
+    gap: 8px;
+  }
+
+  .carousel-dot {
+    width: 32px;
+    height: 32px;
+    font-size: 0.7rem;
+  }
+}
+</style>
+
+<script>
+  let currentIndex = 0;
+  const slides = document.querySelectorAll(".carousel-slide");
+  const dots = document.querySelectorAll(".carousel-dot");
+  const totalSlides = slides.length;
+
+  function showSlide(index: number) {
+    // Ukryj wszystkie
+    slides.forEach((slide) => slide.classList.remove("active"));
+    dots.forEach((dot) => dot.classList.remove("active"));
+
+    // Pokaż wybraną
+    currentIndex = index % totalSlides;
+    slides[currentIndex].classList.add("active");
+    dots[currentIndex].classList.add("active");
+
+    // Restartuj carousel po ostatnim slajdzie
+    if (currentIndex === totalSlides - 1) {
+      setTimeout(() => {
+        showSlide(0);
+      }, 5000);
+    } else {
+      setTimeout(() => {
+        showSlide(currentIndex + 1);
+      }, 5000);
+    }
+  }
+
+  // Event listenery do punktów nawigacji
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const index = parseInt(dot.getAttribute("data-slide") || "0");
+      showSlide(index);
+    });
+  });
+
+  // Automatyczne przełączanie
+  showSlide(0);
+</script>
