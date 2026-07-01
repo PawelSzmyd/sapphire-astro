@@ -34,7 +34,7 @@ const heroImage = residence.gallery?.[0]?.src ?? residence.image;
     </div>
   </section>
 
-  {isLive && residence.gallery && residence.gallery.length > 0 && (
+  {residence.gallery && residence.gallery.length > 0 && (
     <div class="gallery-grid" id="gallery">
       {residence.gallery.map((image, index) => (
         <figure>
@@ -123,7 +123,7 @@ const heroImage = residence.gallery?.[0]?.src ?? residence.image;
     )}
   </div>
 
-  {isLive && residence.gallery && residence.gallery.length > 0 && (
+  {residence.gallery && residence.gallery.length > 0 && (
     <div class="lightbox" id="lightbox" aria-hidden="true">
       <button class="lightbox-close" id="lightbox-close" aria-label="Zamknij powiększenie">✕</button>
       <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Poprzednie zdjęcie">‹</button>
