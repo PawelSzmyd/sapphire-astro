@@ -116,7 +116,7 @@ export const residences: Residence[] = [
     gallery: [
       { src: "/assets/gallery-urban-sky/urban-sky-towers-below.webp", alt: "Widok na wieże URBAN SKY od dołu na tle błękitnego nieba", caption: "Wieże URBAN SKY" },
       { src: "/assets/gallery-urban-sky/urban-sky-pool-rooftop-1.webp", alt: "Widok z drona na basen na dachu URBAN SKY z panoramą Málagi i portu", caption: "Basen na dachu" },
-      { src: "/assets/gallery-urban-sky/urban-sky-jacuzzi-1.webp", alt: "Jacuzzi na dachu z widokiem na stare miasto i zamek", caption: "Jacuzzi" },
+      { src: "/assets/gallery-urban-sky/urban-sky-elevator-28.webp", alt: "Cyfrowy panel windy wskazujący 28. piętro", caption: "Winda prosto na 28. piętro" },
       { src: "/assets/gallery-urban-sky/urban-sky-pool-sunset-1.webp", alt: "Basen o zachodzie słońca z palmą", caption: "Basen o zachodzie słońca" },
       { src: "/assets/gallery-urban-sky/urban-sky-pool-loungers-1.webp", alt: "Leżaki i strefa relaksu przy basenie na dachu", caption: "Strefa relaksu" },
       { src: "/assets/gallery-urban-sky/urban-sky-pool-blue-1.webp", alt: "Basen z bliska, spokojny kadr", caption: "Basen" },
@@ -156,8 +156,8 @@ export const residences: Residence[] = [
       "Przestrzeń zaprojektowana dla gości, którzy cenią dyskretny luksus i nieprzypadkowe lokalizacje.",
     ],
     amenities: [],
-    image: "/assets/gallery-vega/vega-bedroom-amber.webp",
-    imageAlt: "Sypialnia VEGA w ciepłej, bursztynowej tonacji z podświetlaną teksturowaną ścianą",
+    image: "/assets/gallery-vega/vega-pool-sunset.webp",
+    imageAlt: "Basen na tarasie o zachodzie słońca — zdjęcie tymczasowe",
     gallery: [
       { src: "/assets/gallery-vega/vega-bedroom-amber.webp", alt: "Sypialnia z bursztynową pościelą i podświetlaną teksturą na ścianie", caption: "Sypialnia" },
       { src: "/assets/gallery-vega/vega-kitchen-dining-1.webp", alt: "Kuchnia i jadalnia z czarną wyspą i lampami wiszącymi", caption: "Kuchnia i jadalnia" },
