@@ -330,6 +330,17 @@ a {
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.18em;
+  opacity: 0;
+  animation: kickerFadeIn 1400ms ease-out 300ms forwards;
+}
+
+@keyframes kickerFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .hero h1,
