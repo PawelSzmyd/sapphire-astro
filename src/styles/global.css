@@ -748,7 +748,7 @@ h2 {
 .footer-logo {
   width: 164px;
   height: auto;
-  margin-left: -5px;
+  margin-left: -10px;
 }
 
 .footer-copyright {
@@ -767,7 +767,7 @@ h2 {
 .footer-col a {
   font-size: 0.78rem;
   letter-spacing: 0.01em;
-  color: rgba(255, 253, 248, 0.65);
+  color: #8a8a8f;
   text-decoration: none;
   line-height: 1.6;
   transition: color 240ms ease;
