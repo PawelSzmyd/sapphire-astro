@@ -10,12 +10,14 @@ import type { Residence } from "../data/residences";
 interface Props {
   residence: Residence;
   reverse: boolean;
+  index?: number;
 }
 
-const { residence, reverse } = Astro.props;
+const { residence, reverse, index = 0 } = Astro.props;
 const isComingSoon = residence.status === "coming-soon";
 const hasImage = Boolean(residence.image);
 const linkHref = isComingSoon ? "#kontakt" : `/rezydencje/${residence.slug}`;
+const indexLabel = String(index + 1).padStart(3, "0");
 ---
 
 <article class={`residence feature reveal ${reverse ? "reverse" : ""} ${isComingSoon ? "coming-soon" : ""}`}>
@@ -38,6 +40,11 @@ const linkHref = isComingSoon ? "#kontakt" : `/rezydencje/${residence.slug}`;
 
   <div class="residence-body">
     {isComingSoon && <span class="status-badge">Wkrótce</span>}
+    <div class="residence-index">
+      <span class="index-square"></span>
+      <span class="index-line"></span>
+      <span class="index-number">{indexLabel}</span>
+    </div>
     <p class="overline">{residence.name} — {residence.location}</p>
     <h3>{residence.tagline}</h3>
     {residence.paragraphs.map((paragraph) => <p>{paragraph}</p>)}

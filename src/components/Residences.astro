@@ -17,6 +17,6 @@ import { residences } from "../data/residences";
   </div>
 
   {residences.map((residence, index) => (
-    <ResidenceCard residence={residence} reverse={index % 2 === 1} />
+    <ResidenceCard residence={residence} reverse={index % 2 === 1} index={index} />
   ))}
 </section>

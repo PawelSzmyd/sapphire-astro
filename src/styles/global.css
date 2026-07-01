@@ -342,6 +342,35 @@ a {
 
 .kicker,
 .section-label,
+.residence-index {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.residence-index .index-square {
+  width: 7px;
+  height: 7px;
+  background: #8b5a42;
+  flex-shrink: 0;
+}
+
+.residence-index .index-line {
+  width: 44px;
+  height: 1px;
+  background: linear-gradient(90deg, #8b5a42, rgba(139, 90, 66, 0.15));
+  flex-shrink: 0;
+}
+
+.residence-index .index-number {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #8b5a42;
+}
+
 .overline {
   margin: 0 0 18px;
   color: var(--gold);
@@ -656,17 +685,20 @@ h2 {
   padding: 13px 26px;
   border: 1px solid var(--gold);
   border-radius: 8px;
-  color: var(--sapphire-deep);
+  background: var(--gold);
+  color: var(--white);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: background 220ms ease, color 220ms ease, border-color 220ms ease;
+  transition: background 220ms ease, color 220ms ease, border-color 220ms ease, transform 220ms ease;
 }
 
 .text-link:hover {
-  background: var(--gold);
-  color: var(--white);
+  background: var(--sapphire-deep);
+  border-color: var(--sapphire-deep);
+  color: var(--gold);
+  transform: translateY(-1px);
 }
 
 .experience {
