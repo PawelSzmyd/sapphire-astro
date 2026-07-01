@@ -729,16 +729,29 @@ h2 {
 .site-footer {
   background: #0d0d0f;
   color: rgba(255, 253, 248, 0.7);
-  padding: clamp(48px, 7vw, 76px) clamp(18px, 6vw, 86px) 28px;
+  padding: clamp(48px, 7vw, 76px) clamp(18px, 4vw, 56px) 28px;
 }
 
 .footer-columns {
   max-width: 1200px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: clamp(36px, 5vw, 64px);
   padding-bottom: clamp(28px, 4vw, 44px);
+}
+
+.footer-divider {
+  max-width: 1200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 144, 88, 0.4), transparent);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  text-align: left;
+  padding-top: 18px;
+  font-size: 0.65rem;
+  color: rgba(255, 253, 248, 0.4);
 }
 
 .footer-brand-col {
@@ -779,22 +792,6 @@ h2 {
 
 .footer-col a:hover {
   color: var(--white);
-}
-
-.footer-divider {
-  max-width: 1200px;
-  margin: 0 auto;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(184, 144, 88, 0.4), transparent);
-}
-
-.footer-bottom {
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-  padding-top: 18px;
-  font-size: 0.65rem;
-  color: rgba(255, 253, 248, 0.4);
 }
 
 @media (max-width: 768px) {
