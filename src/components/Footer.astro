@@ -3,12 +3,14 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <div class="footer-top">
-    <img class="footer-logo" src="/assets/sapphire-logo-white.svg" alt="SAPPHIRE Apartments" />
-    <p class="footer-tagline">Residences of Rare Distinction.</p>
-  </div>
-
   <div class="footer-columns">
+    <!-- Kolumna 1: Logo + Slogan z typewriter effect -->
+    <div class="footer-col footer-brand-col">
+      <img class="footer-logo" src="/assets/sapphire-logo-white.svg" alt="SAPPHIRE Apartments" />
+      <p class="footer-slogan" data-text="Where the sky meets the sea."></p>
+    </div>
+
+    <!-- Kolumna 2: Apartamenty -->
     <div class="footer-col">
       <h4>Apartamenty</h4>
       <a href="/rezydencje/adhara">Adhara — Torre del Mar</a>
@@ -16,19 +18,37 @@ const year = new Date().getFullYear();
       <a href="/rezydencje/vega">Vega — Marbella</a>
       <a href="/rezydencje/lumare">Lumare — Nerja</a>
     </div>
+
+    <!-- Kolumna 3: Kontakt -->
     <div class="footer-col">
-      <h4>Informacje</h4>
-      <a href="/o-sapphire-apartments">O Sapphire Apartments</a>
-      <a href="/#kontakt">Kontakt</a>
+      <h4>Kontakt</h4>
       <a href="mailto:hello@sapphire-apartments.com">hello@sapphire-apartments.com</a>
-      <span class="footer-static">Costa del Sol, Andaluzja, Hiszpania</span>
+      <a href="https://wa.me/34123456789" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <span class="footer-static">Costa del Sol<br />Andaluzja, Hiszpania</span>
     </div>
   </div>
 
   <div class="footer-divider"></div>
 
   <div class="footer-bottom">
-    <span>© {year} SAPPHIRE Apartments</span>
-    <span>Wszystkie prawa zastrzeżone.</span>
+    <span>&copy; {year} SAPPHIRE Apartments</span>
   </div>
 </footer>
+
+<script>
+  const sloganEl = document.querySelector(".footer-slogan") as HTMLElement;
+  if (sloganEl) {
+    const text = sloganEl.getAttribute("data-text") || "Where the sky meets the sea.";
+    let index = 0;
+    sloganEl.textContent = "";
+
+    const typeInterval = setInterval(() => {
+      if (index < text.length) {
+        sloganEl.textContent += text.charAt(index);
+        index++;
+      } else {
+        clearInterval(typeInterval);
+      }
+    }, 70);
+  }
+</script>
