@@ -156,7 +156,7 @@ export const residences: Residence[] = [
       "Przestrzeń zaprojektowana dla gości, którzy cenią dyskretny luksus i nieprzypadkowe lokalizacje.",
     ],
     amenities: [],
-    image: "/assets/vega-placeholder-bedroom.webp",
+    image: "/assets/vega-living-lounge.webp",
     imageAlt: "Zdjęcie tymczasowe — sypialnia w stylu, jaki będzie reprezentował VEGA",
     ctaLabel: "Dołącz do listy prywatnej",
   },
