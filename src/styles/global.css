@@ -756,6 +756,7 @@ h2 {
   color: rgba(255, 253, 248, 0.35);
   letter-spacing: 0.01em;
   white-space: nowrap;
+  margin-left: 5px;
 }
 
 .footer-col {
