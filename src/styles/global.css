@@ -748,12 +748,14 @@ h2 {
 .footer-logo {
   width: 164px;
   height: auto;
+  margin-left: -5px;
 }
 
 .footer-copyright {
-  font-size: 0.68rem;
+  font-size: 0.34rem;
   color: rgba(255, 253, 248, 0.35);
   letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .footer-col {
