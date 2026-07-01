@@ -17,7 +17,7 @@ const isComingSoon = residence.status === "coming-soon";
 const hasImage = Boolean(residence.image);
 ---
 
-<article class={`residence feature ${reverse ? "reverse" : ""} ${isComingSoon ? "coming-soon" : ""}`}>
+<article class={`residence feature reveal ${reverse ? "reverse" : ""} ${isComingSoon ? "coming-soon" : ""}`}>
   {hasImage ? (
     <div
       class="residence-image"
