@@ -4,10 +4,9 @@ const year = new Date().getFullYear();
 
 <footer class="site-footer">
   <div class="footer-columns">
-    <!-- Kolumna 1: Logo + Slogan z typewriter effect -->
+    <!-- Kolumna 1: Logo -->
     <div class="footer-col footer-brand-col">
-      <img class="footer-logo" src="/assets/sapphire-logo-white.svg" alt="SAPPHIRE Apartments" />
-      <p class="footer-slogan" data-text="Where the sky meets the sea."></p>
+      <img class="footer-logo" src="/assets/sapphire-logo-all-gold.svg" alt="SAPPHIRE Apartments" />
     </div>
 
     <!-- Kolumna 2: Apartamenty -->
@@ -34,21 +33,3 @@ const year = new Date().getFullYear();
     <span>&copy; {year} SAPPHIRE Apartments</span>
   </div>
 </footer>
-
-<script>
-  const sloganEl = document.querySelector(".footer-slogan") as HTMLElement;
-  if (sloganEl) {
-    const text = sloganEl.getAttribute("data-text") || "Where the sky meets the sea.";
-    let index = 0;
-    sloganEl.textContent = "";
-
-    const typeInterval = setInterval(() => {
-      if (index < text.length) {
-        sloganEl.textContent += text.charAt(index);
-        index++;
-      } else {
-        clearInterval(typeInterval);
-      }
-    }, 70);
-  }
-</script>
