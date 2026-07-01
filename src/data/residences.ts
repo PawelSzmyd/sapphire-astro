@@ -114,7 +114,7 @@ export const residences: Residence[] = [
     image: "/assets/gallery-urban-sky/urban-sky-towers-below.webp",
     imageAlt: "Widok z drona na basen na dachu URBAN SKY z panoramą Málagi i portu",
     gallery: [
-      { src: "/assets/gallery-urban-sky/urban-sky-render-distance.webp", alt: "Widok z oddali na wieże URBAN SKY otoczone palmami", caption: "Wieże URBAN SKY" },
+      { src: "/assets/gallery-urban-sky/urban-sky-towers-below.webp", alt: "Widok na wieże URBAN SKY od dołu na tle błękitnego nieba", caption: "Wieże URBAN SKY" },
       { src: "/assets/gallery-urban-sky/urban-sky-pool-rooftop-1.webp", alt: "Widok z drona na basen na dachu URBAN SKY z panoramą Málagi i portu", caption: "Basen na dachu" },
       { src: "/assets/gallery-urban-sky/urban-sky-jacuzzi-1.webp", alt: "Jacuzzi na dachu z widokiem na stare miasto i zamek", caption: "Jacuzzi" },
       { src: "/assets/gallery-urban-sky/urban-sky-pool-sunset-1.webp", alt: "Basen o zachodzie słońca z palmą", caption: "Basen o zachodzie słońca" },
@@ -156,7 +156,7 @@ export const residences: Residence[] = [
       "Przestrzeń zaprojektowana dla gości, którzy cenią dyskretny luksus i nieprzypadkowe lokalizacje.",
     ],
     amenities: [],
-    image: "/assets/vega-living-lounge.webp",
+    image: "/assets/vega-placeholder-bedroom.webp",
     imageAlt: "Zdjęcie tymczasowe — sypialnia w stylu, jaki będzie reprezentował VEGA",
     ctaLabel: "Dołącz do listy prywatnej",
   },
