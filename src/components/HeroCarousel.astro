@@ -105,24 +105,19 @@ const slides = heroData.map(data => ({
 }
 
 .carousel-slide.active .carousel-image {
-  animation: zoomOutBlur 3.5s ease-out forwards;
+  animation: gravityDrop 0.8s cubic-bezier(0.55, 0, 1, 0.45) forwards;
 }
 
-@keyframes zoomOutBlur {
+@keyframes gravityDrop {
   0% {
-    transform: scale(1.15);
-    filter: blur(12px);
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  60% {
     opacity: 1;
   }
-  40% {
-    filter: blur(8px);
-  }
-  70% {
-    filter: blur(3px);
-  }
   100% {
-    transform: scale(1);
-    filter: blur(0);
+    transform: translateY(0);
     opacity: 1;
   }
 }
@@ -140,7 +135,7 @@ const slides = heroData.map(data => ({
   color: var(--white);
   padding: clamp(56px, 12vw, 120px) clamp(18px, 6vw, 86px);
   width: 100%;
-  animation: slideContentIn 1200ms cubic-bezier(0.34, 1.56, 0.64, 1) 1400ms both;
+  animation: slideContentIn 700ms cubic-bezier(0.34, 1.56, 0.64, 1) 800ms both;
 }
 
 @keyframes slideContentIn {
@@ -170,7 +165,7 @@ const slides = heroData.map(data => ({
   max-width: 540px;
   line-height: 1.7;
   font-weight: 300;
-  animation: slideTaglineIn 1000ms ease-out 1800ms both;
+  animation: slideTaglineIn 600ms ease-out 1000ms both;
 }
 
 @keyframes slideTaglineIn {
@@ -194,7 +189,7 @@ const slides = heroData.map(data => ({
 }
 
 .carousel-welcome-slide.active .carousel-welcome-bg {
-  animation: zoomOutBlur 3.5s ease-out forwards;
+  animation: gravityDrop 0.8s cubic-bezier(0.55, 0, 1, 0.45) forwards;
 }
 
 .carousel-welcome-content {
@@ -207,7 +202,7 @@ const slides = heroData.map(data => ({
 .welcome-container {
   text-align: center;
   max-width: 600px;
-  animation: welcomeContentFadeIn 1200ms cubic-bezier(0.34, 1.56, 0.64, 1) 1400ms both;
+  animation: welcomeContentFadeIn 700ms cubic-bezier(0.34, 1.56, 0.64, 1) 800ms both;
 }
 
 @keyframes welcomeContentFadeIn {
@@ -227,7 +222,7 @@ const slides = heroData.map(data => ({
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(255, 253, 248, 0.8);
-  animation: charFadeIn 600ms ease-out 3400ms both;
+  animation: charFadeIn 400ms ease-out 900ms both;
 }
 
 .welcome-headline {
@@ -238,7 +233,7 @@ const slides = heroData.map(data => ({
   line-height: 1;
   letter-spacing: 0.06em;
   color: var(--white);
-  animation: textReveal 1100ms ease-out 3500ms both;
+  animation: textReveal 700ms ease-out 1000ms both;
 }
 
 .welcome-final-slogan {
@@ -248,7 +243,7 @@ const slides = heroData.map(data => ({
   letter-spacing: 0.04em;
   font-style: italic;
   font-weight: 300;
-  animation: sloganFadeIn 700ms ease-out 3800ms both;
+  animation: sloganFadeIn 500ms ease-out 1300ms both;
 }
 
 @keyframes charFadeIn {
@@ -324,11 +319,11 @@ const slides = heroData.map(data => ({
     currentIndex = index % totalSlides;
     slides[currentIndex].classList.add("active");
 
-    // Zaplanuj następne
+    // Zaplanuj następne (krótsza animacja = krótszy total czas na slide)
     if (autoplayTimeout) clearTimeout(autoplayTimeout);
     autoplayTimeout = setTimeout(() => {
       showSlide(currentIndex + 1);
-    }, 6500);
+    }, 4000);
   }
 
   // Start
