@@ -6,7 +6,7 @@
 
 <header class="site-header" aria-label="Główna nawigacja">
   <a class="brand" href="/" aria-label="SAPPHIRE Apartments">
-    <img src="/assets/sapphire-logo-white.svg" alt="SAPPHIRE Apartments" />
+    <img id="header-logo" src="/assets/sapphire-logo-white.svg" alt="SAPPHIRE Apartments" />
   </a>
 
   <nav class="nav-links" id="nav-links">
@@ -28,16 +28,27 @@
 
 <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
   <a href="/o-sapphire-apartments">O Sapphire Apartments</a>
-  <a href="/rezydencje/adhara">Adhara</a>
-  <a href="/rezydencje/urban-sky">Urban Sky</a>
-  <a href="/rezydencje/vega">Vega</a>
+  <a href="/rezydencje/adhara">ADHARA — Torre del Mar</a>
+  <a href="/rezydencje/urban-sky">URBAN SKY — Málaga</a>
+  <a href="/rezydencje/vega">VEGA — Marbella</a>
   <a href="/#kontakt">Kontakt</a>
   <a href="/#kontakt" class="mobile-nav-cta">Zarezerwuj</a>
+
+  <div class="lang-switcher">
+    <button class="lang-option active" data-lang="pl">PL</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-option" data-lang="en">EN</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-option" data-lang="es">ES</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-option" data-lang="ae">AE</button>
+  </div>
 </nav>
 
 <script>
   const toggle = document.getElementById("nav-toggle");
   const mobileNav = document.getElementById("mobile-nav");
+  const headerLogo = document.getElementById("header-logo") as HTMLImageElement;
 
   function closeMenu() {
     mobileNav?.classList.remove("open");
@@ -46,6 +57,7 @@
     mobileNav?.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
     document.documentElement.style.overflow = "";
+    if (headerLogo) headerLogo.src = "/assets/sapphire-logo-white.svg";
   }
 
   function openMenu() {
@@ -55,6 +67,7 @@
     mobileNav?.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
+    if (headerLogo) headerLogo.src = "/assets/sapphire-logo-all-gold.svg";
   }
 
   toggle?.addEventListener("click", () => {
@@ -67,5 +80,14 @@
 
   mobileNav?.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", closeMenu);
+  });
+
+  // Przełącznik języków (placeholder UI - funkcjonalność i18n do wdrożenia później)
+  mobileNav?.querySelectorAll(".lang-option").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      mobileNav?.querySelectorAll(".lang-option").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
   });
 </script>

@@ -174,9 +174,10 @@ a {
   display: none;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 28px;
-  background: var(--sapphire-deep);
+  align-items: flex-start;
+  gap: 24px;
+  padding-left: clamp(28px, 8vw, 64px);
+  background: #0d0d0f;
 }
 
 .mobile-nav.open {
@@ -184,10 +185,11 @@ a {
 }
 
 .mobile-nav a {
-  color: var(--white);
+  color: #8a8a8f;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   letter-spacing: 0.02em;
+  text-align: left;
   opacity: 0;
   transform: translateY(14px);
 }
@@ -219,15 +221,57 @@ a {
 }
 
 .mobile-nav-cta {
-  margin-top: 12px;
-  padding: 12px 28px;
-  border: 1px solid rgba(255, 253, 248, 0.5);
+  margin-top: 8px;
+  padding: 9px 22px;
+  border: 1px solid var(--gold);
   border-radius: 8px;
-  font-family: Montserrat, Arial, sans-serif;
-  font-size: 0.78rem;
+  background: transparent;
+  color: var(--gold) !important;
+  font-family: Montserrat, Arial, sans-serif !important;
+  font-size: 0.72rem !important;
   font-weight: 600;
   letter-spacing: 0.11em;
   text-transform: uppercase;
+}
+
+.lang-switcher {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.mobile-nav.open .lang-switcher {
+  animation: mobile-nav-in 420ms ease forwards;
+  animation-delay: 420ms;
+}
+
+.lang-option {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #6f6f74;
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+
+.lang-option:hover {
+  color: #8a8a8f;
+}
+
+.lang-option.active {
+  color: var(--gold);
+}
+
+.lang-sep {
+  color: #4a4a4e;
+  font-size: 0.7rem;
 }
 
 .hero {
