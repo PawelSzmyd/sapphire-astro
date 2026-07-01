@@ -204,6 +204,7 @@ a {
 .mobile-nav.open a:nth-child(4) { animation-delay: 240ms; }
 .mobile-nav.open a:nth-child(5) { animation-delay: 300ms; }
 .mobile-nav.open a:nth-child(6) { animation-delay: 360ms; }
+.mobile-nav.open a:nth-child(7) { animation-delay: 420ms; }
 
 @keyframes mobile-nav-in {
   to {
@@ -245,7 +246,7 @@ a {
 
 .mobile-nav.open .lang-switcher {
   animation: mobile-nav-in 420ms ease forwards;
-  animation-delay: 420ms;
+  animation-delay: 480ms;
 }
 
 .lang-option {
