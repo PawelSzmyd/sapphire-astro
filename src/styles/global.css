@@ -281,7 +281,7 @@ a {
 }
 
 .hero .kicker {
-  color: var(--gold);
+  color: var(--white);
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.18em;
@@ -748,7 +748,7 @@ h2 {
 }
 
 .footer-logo {
-  width: 120px;
+  width: 126px;
   height: auto;
 }
 
@@ -808,7 +808,7 @@ h2 {
   }
 
   .footer-logo {
-    width: 96px;
+    width: 101px;
   }
 
   .footer-col h4 {
