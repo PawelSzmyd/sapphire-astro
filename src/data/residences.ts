@@ -111,10 +111,10 @@ export const residences: Residence[] = [
       "Nowoczesna architektura premium",
       "Doskonała lokalizacja w centrum miasta",
     ],
-    image: "/assets/gallery-urban-sky/urban-sky-pool-rooftop-1.webp",
+    image: "/assets/gallery-urban-sky/urban-sky-towers-below.webp",
     imageAlt: "Widok z drona na basen na dachu URBAN SKY z panoramą Málagi i portu",
     gallery: [
-      { src: "/assets/gallery-urban-sky/urban-sky-towers-render.webp", alt: "Wizualizacja wież URBAN SKY o zachodzie słońca", caption: "Wieże URBAN SKY" },
+      { src: "/assets/gallery-urban-sky/urban-sky-render-distance.webp", alt: "Widok z oddali na wieże URBAN SKY otoczone palmami", caption: "Wieże URBAN SKY" },
       { src: "/assets/gallery-urban-sky/urban-sky-pool-rooftop-1.webp", alt: "Widok z drona na basen na dachu URBAN SKY z panoramą Málagi i portu", caption: "Basen na dachu" },
       { src: "/assets/gallery-urban-sky/urban-sky-jacuzzi-1.webp", alt: "Jacuzzi na dachu z widokiem na stare miasto i zamek", caption: "Jacuzzi" },
       { src: "/assets/gallery-urban-sky/urban-sky-pool-sunset-1.webp", alt: "Basen o zachodzie słońca z palmą", caption: "Basen o zachodzie słońca" },
