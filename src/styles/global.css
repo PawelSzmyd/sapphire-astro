@@ -223,7 +223,7 @@ a {
 
 .mobile-nav-cta {
   margin-top: 8px;
-  padding: 9px 22px;
+  padding: 16px 22px;
   border: 1px solid var(--gold);
   border-radius: 8px;
   background: transparent;
@@ -236,7 +236,7 @@ a {
 }
 
 .lang-switcher {
-  margin-top: 20px;
+  margin-top: 48px;
   display: flex;
   align-items: center;
   gap: 10px;
