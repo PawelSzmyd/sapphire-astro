@@ -773,7 +773,7 @@ h2 {
 .site-footer {
   background: #0d0d0f;
   color: rgba(255, 253, 248, 0.7);
-  padding: clamp(48px, 7vw, 76px) clamp(18px, 4vw, 56px) clamp(32px, 5vw, 52px);
+  padding: clamp(48px, 7vw, 76px) clamp(18px, 4vw, 56px) calc(clamp(32px, 5vw, 52px) + 10px);
 }
 
 .footer-columns {
@@ -793,6 +793,7 @@ h2 {
   width: 210px;
   height: auto;
   margin-left: -10px;
+  margin-top: -5px;
 }
 
 .footer-copyright {
