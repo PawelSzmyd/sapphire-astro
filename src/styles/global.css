@@ -186,9 +186,11 @@ a {
 
 .mobile-nav a {
   color: #8a8a8f;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.5rem;
-  letter-spacing: 0.02em;
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   text-align: left;
   opacity: 0;
   transform: translateY(14px);
@@ -325,6 +327,10 @@ a {
   text-transform: uppercase;
 }
 
+.residence-body .overline {
+  color: #8b5a42;
+}
+
 .hero .kicker {
   color: var(--white);
   font-size: 0.72rem;
@@ -455,6 +461,12 @@ h3 {
   animation: section-soft-in 1s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-timeline: view();
   animation-range: entry 0% cover 34%;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: 96px;
+  }
 }
 
 .split {
@@ -602,12 +614,23 @@ h2 {
 
 .text-link {
   display: inline-flex;
-  padding-bottom: 5px;
-  border-bottom: 1px solid var(--gold);
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 13px 26px;
+  border: 1px solid var(--gold);
+  border-radius: 8px;
   color: var(--sapphire-deep);
-  font-weight: 800;
-  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  transition: background 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+.text-link:hover {
+  background: var(--gold);
+  color: var(--white);
 }
 
 .experience {
