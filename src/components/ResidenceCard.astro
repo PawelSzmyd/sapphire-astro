@@ -15,23 +15,26 @@ interface Props {
 const { residence, reverse } = Astro.props;
 const isComingSoon = residence.status === "coming-soon";
 const hasImage = Boolean(residence.image);
+const linkHref = isComingSoon ? "#kontakt" : `/rezydencje/${residence.slug}`;
 ---
 
 <article class={`residence feature reveal ${reverse ? "reverse" : ""} ${isComingSoon ? "coming-soon" : ""}`}>
-  {hasImage ? (
-    <div
-      class="residence-image"
-      style={`background-image: url('${residence.image}'); background-position: 50% center;`}
-      role="img"
-      aria-label={residence.imageAlt}
-    >
-      {isComingSoon && <span class="status-badge on-image">Wkrótce</span>}
-    </div>
-  ) : (
-    <div class="residence-image placeholder" role="img" aria-label={`${residence.name} — rezydencja w przygotowaniu`}>
-      <span class="placeholder-name">{residence.name}</span>
-    </div>
-  )}
+  <a class="residence-image-link" href={linkHref} aria-label={`Zobacz ${residence.name} — ${residence.location}`}>
+    {hasImage ? (
+      <div
+        class="residence-image"
+        style={`background-image: url('${residence.image}'); background-position: 50% center;`}
+        role="img"
+        aria-label={residence.imageAlt}
+      >
+        {isComingSoon && <span class="status-badge on-image">Wkrótce</span>}
+      </div>
+    ) : (
+      <div class="residence-image placeholder" role="img" aria-label={`${residence.name} — rezydencja w przygotowaniu`}>
+        <span class="placeholder-name">{residence.name}</span>
+      </div>
+    )}
+  </a>
 
   <div class="residence-body">
     {isComingSoon && <span class="status-badge">Wkrótce</span>}
@@ -45,6 +48,6 @@ const hasImage = Boolean(residence.image);
       </ul>
     )}
 
-    <a class="text-link" href={isComingSoon ? "#kontakt" : `/rezydencje/${residence.slug}`}>{residence.ctaLabel}</a>
+    <a class="text-link" href={linkHref}>{residence.ctaLabel}</a>
   </div>
 </article>

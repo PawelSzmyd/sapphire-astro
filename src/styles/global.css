@@ -543,17 +543,29 @@ h2 {
   grid-template-columns: minmax(290px, 0.95fr) minmax(300px, 1.05fr);
 }
 
-.residence.reverse .residence-image {
+.residence.reverse .residence-image-link {
   order: 2;
+}
+
+.residence-image-link {
+  display: block;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .residence-image {
   min-height: 540px;
+  height: 100%;
   border-radius: 8px;
   box-shadow: var(--shadow);
   background-position: center;
   background-size: cover;
   animation: always-float 5.8s ease-in-out infinite;
+  transition: box-shadow 320ms ease;
+}
+
+.residence-image-link:hover .residence-image {
+  box-shadow: 0 30px 80px rgba(9, 31, 39, 0.24);
 }
 
 .residence:nth-of-type(odd) .residence-image {
@@ -1168,7 +1180,7 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  .residence.reverse .residence-image {
+  .residence.reverse .residence-image-link {
     order: 0;
   }
 
