@@ -35,8 +35,7 @@
   position: absolute;
   top: 18px;
   left: 18px;
-  background: rgba(17, 22, 26, 0.78);
-  backdrop-filter: blur(4px);
+  background: transparent;
   border-color: var(--gold);
 }
 
