@@ -53,8 +53,8 @@ export const residences: Residence[] = [
       "Szybki internet światłowodowy",
       "Idealna przestrzeń do dłuższych pobytów",
     ],
-    image: "/assets/gallery-adhara/adhara-terrace-night.webp",
-    imageAlt: "Taras Adhara wieczorem z zadaszeniem i widokiem na okolicę",
+    image: "/assets/gallery-adhara/adhara-balcony-pool-day.webp",
+    imageAlt: "Widok z balkonu Adhara na basen w ciągu dnia",
     gallery: [
       { src: "/assets/adhara-living-kitchen.webp", alt: "Otwarta przestrzeń kuchenno-dzienna w rezydencji Adhara", caption: "Salon i kuchnia" },
       { src: "/assets/gallery-adhara/adhara-living-tv.webp", alt: "Salon z telewizorem i wygodną sofą w rezydencji Adhara", caption: "Salon" },
