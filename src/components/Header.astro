@@ -56,6 +56,21 @@
   const mobileNav = document.getElementById("mobile-nav");
   const headerLogo = document.getElementById("header-logo") as HTMLImageElement;
 
+  const header = document.querySelector(".site-header");
+  let isScrolled = false;
+  let isMenuOpen = false;
+
+  function updateLogo() {
+    if (!headerLogo) return;
+    if (isMenuOpen) {
+      headerLogo.src = "/assets/sapphire-logo-all-gold.svg";
+    } else if (isScrolled) {
+      headerLogo.src = "/assets/sapphire-logo-black.svg";
+    } else {
+      headerLogo.src = "/assets/sapphire-logo-white.svg";
+    }
+  }
+
   function closeMenu() {
     mobileNav?.classList.remove("open");
     toggle?.classList.remove("open");
@@ -63,7 +78,8 @@
     mobileNav?.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
     document.documentElement.style.overflow = "";
-    if (headerLogo) headerLogo.src = "/assets/sapphire-logo-white.svg";
+    isMenuOpen = false;
+    updateLogo();
   }
 
   function openMenu() {
@@ -73,7 +89,8 @@
     mobileNav?.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
-    if (headerLogo) headerLogo.src = "/assets/sapphire-logo-all-gold.svg";
+    isMenuOpen = true;
+    updateLogo();
   }
 
   toggle?.addEventListener("click", () => {
@@ -97,16 +114,13 @@
     });
   });
 
-  // Efekt "szronu" (frosted glass) na headerze po przewinięciu strony —
-  // płynnie pojawiający się blur + gradient, tak jak na przyciskach.
-  const header = document.querySelector(".site-header");
+  // Efekt "szronu" (frosted glass, białe tło) na headerze po przewinięciu strony —
+  // płynnie pojawiający się blur + jasne tło, logo przełącza się na czarne.
   function updateHeaderScrollState() {
     if (!header) return;
-    if (window.scrollY > 40) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
+    isScrolled = window.scrollY > 40;
+    header.classList.toggle("scrolled", isScrolled);
+    updateLogo();
   }
   updateHeaderScrollState();
   window.addEventListener("scroll", updateHeaderScrollState, { passive: true });
