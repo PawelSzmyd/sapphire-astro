@@ -1265,6 +1265,11 @@ h2 {
     order: 0;
   }
 
+  .residence-body,
+  .residence.reverse .residence-body {
+    padding: 4px clamp(20px, 5vw, 28px) clamp(24px, 5vw, 32px);
+  }
+
   .experience-grid {
     grid-template-columns: repeat(2, 1fr);
   }
