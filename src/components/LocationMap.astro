@@ -1,0 +1,258 @@
+---
+// Mapa lokalizacji SAPPHIRE Apartments — stylizowany kontur wybrzeża Costa del Sol
+// z pulsującymi punktami dla każdej rezydencji. Kliknięcie punktu przenosi na
+// podstronę rezydencji. To NIE jest mapa kartograficznie dokładna — to elegancki,
+// uproszczony motyw graficzny z punktami ułożonymi w prawidłowej kolejności
+// geograficznej (Marbella → Málaga → Torre del Mar → Nerja, zachód → wschód).
+//
+// Ważne: etykiety (nazwa + lokalizacja) są renderowane jako HTML nad SVG,
+// pozycjonowane procentowo — gdyby tekst siedział wewnątrz <svg viewBox>,
+// przeskalowałby się razem z grafiką i na mobile byłby nieczytelny (kilka px).
+import { residences } from "../data/residences";
+
+const VIEW_W = 800;
+const VIEW_H = 420;
+
+const points = [
+  { slug: "vega", x: 96, y: 302 },
+  { slug: "urban-sky", x: 330, y: 336 },
+  { slug: "adhara", x: 512, y: 300 },
+  { slug: "lumare", x: 706, y: 244 },
+]
+  .map((p) => ({
+    ...p,
+    residence: residences.find((r) => r.slug === p.slug)!,
+    xPct: (p.x / VIEW_W) * 100,
+    yPct: (p.y / VIEW_H) * 100,
+  }))
+  .filter((p) => p.residence);
+---
+
+<section class="section location-map-section reveal" aria-label="Mapa lokalizacji SAPPHIRE Apartments">
+  <div class="section-heading compact">
+    <div>
+      <div class="section-label">Gdzie nas znajdziesz</div>
+      <h2>Cztery adresy. Jedno wybrzeże.</h2>
+    </div>
+    <p>Wszystkie rezydencje SAPPHIRE leżą bezpośrednio przy Morzu Śródziemnym, na Costa del Sol. Wybierz punkt na mapie, aby poznać rezydencję.</p>
+  </div>
+
+  <div class="map-wrap">
+    <div class="map-stage">
+      <svg class="coast-map" viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="map-title">
+        <title id="map-title">Mapa czterech rezydencji SAPPHIRE Apartments na wybrzeżu Costa del Sol</title>
+
+        <path
+          class="landmass"
+          d="M0,0 L800,0 L800,210 C 740,220 690,250 640,242 C 590,234 560,206 500,214 C 440,222 420,268 360,272 C 300,276 270,240 210,252 C 150,264 130,300 70,296 C 30,293 10,280 0,270 Z"
+        ></path>
+
+        <path
+          class="sea"
+          d="M0,270 C 10,280 30,293 70,296 C 130,300 150,264 210,252 C 270,240 300,276 360,272 C 420,268 440,222 500,214 C 560,206 590,234 640,242 C 690,250 740,220 800,210 L800,420 L0,420 Z"
+        ></path>
+
+        <path
+          class="coastline"
+          d="M0,270 C 10,280 30,293 70,296 C 130,300 150,264 210,252 C 270,240 300,276 360,272 C 420,268 440,222 500,214 C 560,206 590,234 640,242 C 690,250 740,220 800,210"
+          fill="none"
+        ></path>
+
+        <g class="graticule" aria-hidden="true">
+          <line x1="0" y1="90" x2="800" y2="90"></line>
+          <line x1="0" y1="170" x2="800" y2="170"></line>
+        </g>
+
+        {points.map((p) => (
+          <g class={`map-point-svg ${p.residence.status === "coming-soon" ? "coming-soon" : ""}`}>
+            <circle class="pulse-ring" cx={p.x} cy={p.y} r="9"></circle>
+            <circle class="pulse-ring delay" cx={p.x} cy={p.y} r="9"></circle>
+            <circle class="point-dot" cx={p.x} cy={p.y} r="6"></circle>
+            <line class="point-leader" x1={p.x} y1={p.y - 8} x2={p.x} y2={p.y - 26}></line>
+          </g>
+        ))}
+      </svg>
+
+      <div class="map-labels">
+        {points.map((p) => (
+          <a
+            class={`map-label ${p.residence.status === "coming-soon" ? "coming-soon" : ""}`}
+            style={`left: ${p.xPct}%; top: ${p.yPct}%;`}
+            href={p.residence.status === "coming-soon" ? "#kontakt" : `/rezydencje/${p.slug}`}
+            aria-label={`Zobacz ${p.residence.name} — ${p.residence.location}`}
+          >
+            <span class="label-name">{p.residence.name}</span>
+            <span class="label-location">{p.residence.location}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .location-map-section {
+    background: var(--paper);
+  }
+
+  .map-wrap {
+    max-width: 1100px;
+    margin: 48px auto 0;
+    padding: clamp(24px, 4vw, 48px);
+    background: linear-gradient(180deg, #fbfaf6 0%, #f3f0e8 100%);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+  }
+
+  .map-stage {
+    position: relative;
+    width: 100%;
+  }
+
+  .coast-map {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .landmass {
+    fill: #ece6d8;
+  }
+
+  .sea {
+    fill: #dfe8e6;
+  }
+
+  .coastline {
+    stroke: var(--gold);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    opacity: 0.55;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .graticule line {
+    stroke: #23292b;
+    stroke-width: 0.5;
+    opacity: 0.06;
+    stroke-dasharray: 2 8;
+  }
+
+  .point-dot {
+    fill: var(--gold);
+    stroke: var(--white);
+    stroke-width: 2.5;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .map-point-svg.coming-soon .point-dot {
+    fill: #8b5a42;
+  }
+
+  .pulse-ring {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1.4;
+    opacity: 0;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: map-pulse 3.2s ease-out infinite;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .map-point-svg.coming-soon .pulse-ring {
+    stroke: #8b5a42;
+  }
+
+  .pulse-ring.delay {
+    animation-delay: 1.6s;
+  }
+
+  @keyframes map-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.55;
+    }
+    100% {
+      transform: scale(2.6);
+      opacity: 0;
+    }
+  }
+
+  .point-leader {
+    stroke: var(--sapphire-deep);
+    stroke-width: 1;
+    opacity: 0.25;
+    vector-effect: non-scaling-stroke;
+  }
+
+  /* Warstwa etykiet HTML — pozycjonowana procentowo nad SVG, żeby tekst
+     zachował stały, czytelny rozmiar niezależnie od szerokości ekranu. */
+  .map-labels {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .map-label {
+    position: absolute;
+    transform: translate(-50%, calc(-100% - 28px));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 2px;
+    pointer-events: auto;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .label-name {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--sapphire-deep);
+    transition: color 200ms ease;
+  }
+
+  .label-location {
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: clamp(0.55rem, 1vw, 0.66rem);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .map-label.coming-soon .label-location {
+    color: #8b5a42;
+  }
+
+  .map-label:hover .label-name,
+  .map-label:focus-visible .label-name {
+    color: var(--gold);
+  }
+
+  .map-label.coming-soon:hover .label-name,
+  .map-label.coming-soon:focus-visible .label-name {
+    color: #8b5a42;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pulse-ring {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .map-wrap {
+      padding: 18px 12px;
+      border-radius: 14px;
+    }
+
+    .map-label {
+      transform: translate(-50%, calc(-100% - 20px));
+    }
+  }
+</style>
