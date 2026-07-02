@@ -156,8 +156,8 @@ export const residences: Residence[] = [
       "Przestrzeń zaprojektowana dla gości, którzy cenią dyskretny luksus i nieprzypadkowe lokalizacje.",
     ],
     amenities: [],
-    image: "/assets/gallery-vega/vega-pool-sunset.webp",
-    imageAlt: "Basen na tarasie o zachodzie słońca — zdjęcie tymczasowe",
+    image: "/assets/gallery-vega/vega-bedroom-amber.webp",
+    imageAlt: "Sypialnia w ciepłej, bursztynowej tonacji z podświetlaną teksturowaną ścianą — zdjęcie tymczasowe",
     gallery: [
       { src: "/assets/gallery-vega/vega-bedroom-amber.webp", alt: "Sypialnia z bursztynową pościelą i podświetlaną teksturą na ścianie", caption: "Sypialnia" },
       { src: "/assets/gallery-vega/vega-kitchen-dining-1.webp", alt: "Kuchnia i jadalnia z czarną wyspą i lampami wiszącymi", caption: "Kuchnia i jadalnia" },
