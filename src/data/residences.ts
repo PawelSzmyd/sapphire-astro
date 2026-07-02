@@ -174,7 +174,7 @@ export const residences: Residence[] = [
     slug: "cool-homes-beach-2",
     status: "coming-soon",
     name: "COOL HOMES BEACH 2",
-    location: "Nerja",
+    location: "Costa del Sol Málaga",
     tagline: "A first-class life on the seafront.",
     paragraphs: [
       "Doskonałe miejsce, by odpocząć lub przyjąć gości w wielkim stylu. Cool Homes Beach 2 to awangardowy, elegancki design, który nadaje wnętrzu unikalny i wyrafinowany charakter — ale to nie tylko estetyka. To także komfort codziennego życia.",
