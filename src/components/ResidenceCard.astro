@@ -19,12 +19,6 @@ const linkHref = isComingSoon ? "#kontakt" : `/rezydencje/${residence.slug}`;
 ---
 
 <article class={`residence feature reveal ${reverse ? "reverse" : ""} ${isComingSoon ? "coming-soon" : ""}`}>
-  <div class="residence-card-header">
-    {isComingSoon && <span class="status-badge">Wkrótce</span>}
-    <p class="overline">{residence.name} — {residence.location}</p>
-    <h3>{residence.tagline}</h3>
-  </div>
-
   <a class="residence-image-link" href={linkHref} aria-label={`Zobacz ${residence.name} — ${residence.location}`}>
     {hasImage ? (
       <div
@@ -43,6 +37,8 @@ const linkHref = isComingSoon ? "#kontakt" : `/rezydencje/${residence.slug}`;
   </a>
 
   <div class="residence-body">
+    <p class="overline">{residence.name} — {residence.location}</p>
+    <h3>{residence.tagline}</h3>
     {residence.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
 
     {residence.amenities.length > 0 && (
