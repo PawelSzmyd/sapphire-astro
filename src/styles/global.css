@@ -624,10 +624,10 @@ h2 {
   min-height: 540px;
   height: 100%;
   border-radius: 8px;
+  border: 1px solid #0d0d0f;
   box-shadow: var(--shadow);
   background-position: center;
   background-size: cover;
-  animation: always-float 5.8s ease-in-out infinite;
   transition: box-shadow 320ms ease;
 }
 
@@ -649,14 +649,6 @@ h2 {
 
 .residence-image-link:hover .residence-image {
   box-shadow: 0 30px 80px rgba(9, 31, 39, 0.24);
-}
-
-.residence:nth-of-type(odd) .residence-image {
-  animation: soft-float 6.4s ease-in-out infinite;
-}
-
-.residence:nth-of-type(even) .residence-image {
-  animation: soft-float-alt 7.2s ease-in-out infinite;
 }
 
 .residence-image.adhara {
