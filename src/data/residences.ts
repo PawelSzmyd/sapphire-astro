@@ -146,13 +146,13 @@ export const residences: Residence[] = [
     ],
   },
   {
-    slug: "vega",
+    slug: "villa-del-mar",
     status: "coming-soon",
-    name: "VEGA",
-    location: "Marbella",
+    name: "VILLA DEL MAR",
+    location: "Málaga",
     tagline: "Effortless Mediterranean elegance.",
     paragraphs: [
-      "Rezydencja VEGA powstaje w samym sercu Marbelli — tam, gdzie elegancja wybrzeża spotyka się z energią miasta.",
+      "Rezydencja VILLA DEL MAR powstaje w samym sercu Málagi — tam, gdzie elegancja wybrzeża spotyka się z energią miasta.",
       "Przestrzeń zaprojektowana dla gości, którzy cenią dyskretny luksus i nieprzypadkowe lokalizacje.",
     ],
     amenities: [],
