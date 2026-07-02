@@ -630,6 +630,10 @@ h2 {
   transition: box-shadow 320ms ease;
 }
 
+.residence:nth-of-type(1) .residence-image {
+  border: none;
+}
+
 .status-badge.on-image {
   position: absolute;
   top: 18px;
