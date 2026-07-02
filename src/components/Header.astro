@@ -57,18 +57,13 @@
   const headerLogo = document.getElementById("header-logo") as HTMLImageElement;
 
   const header = document.querySelector(".site-header");
-  let isScrolled = false;
   let isMenuOpen = false;
 
   function updateLogo() {
     if (!headerLogo) return;
-    if (isMenuOpen) {
-      headerLogo.src = "/assets/sapphire-logo-all-gold.svg";
-    } else if (isScrolled) {
-      headerLogo.src = "/assets/sapphire-logo-black.svg";
-    } else {
-      headerLogo.src = "/assets/sapphire-logo-white.svg";
-    }
+    headerLogo.src = isMenuOpen
+      ? "/assets/sapphire-logo-all-gold.svg"
+      : "/assets/sapphire-logo-white.svg";
   }
 
   function closeMenu() {
@@ -114,13 +109,11 @@
     });
   });
 
-  // Efekt "szronu" (frosted glass, białe tło) na headerze po przewinięciu strony —
-  // płynnie pojawiający się blur + jasne tło, logo przełącza się na czarne.
+  // Efekt rozmycia (blur) na headerze po przewinięciu strony — bez przyciemniania
+  // gradientem, samo tło pod headerem robi się rozmyte. Logo zawsze białe.
   function updateHeaderScrollState() {
     if (!header) return;
-    isScrolled = window.scrollY > 40;
-    header.classList.toggle("scrolled", isScrolled);
-    updateLogo();
+    header.classList.toggle("scrolled", window.scrollY > 40);
   }
   updateHeaderScrollState();
   window.addEventListener("scroll", updateHeaderScrollState, { passive: true });
