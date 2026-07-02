@@ -615,13 +615,14 @@ h2 {
 
 .residence-image-link {
   display: block;
+  align-self: start;
   cursor: pointer;
 }
 
 .residence-image {
   position: relative;
-  min-height: 540px;
-  height: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
   border: 1px solid #0d0d0f;
   box-shadow: var(--shadow);
   background-position: center;
@@ -1319,10 +1320,6 @@ h2 {
 
   .section {
     padding: 64px 18px;
-  }
-
-  .residence-image {
-    min-height: 390px;
   }
 
   .experience-grid {
