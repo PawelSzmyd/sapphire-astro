@@ -177,8 +177,8 @@ export const residences: Residence[] = [
     location: "Nerja",
     tagline: "A first-class life on the seafront.",
     paragraphs: [
-      "Cool Homes Beach 2 powstaje na klifach Nerji, z widokiem na Morze Śródziemne rozciągającym się aż po horyzont.",
-      "Dramatyczne wybrzeże i złote światło zachodu słońca — rezydencja stworzona dla wyjątkowych chwil.",
+      "Doskonałe miejsce, by odpocząć lub przyjąć gości w wielkim stylu. Cool Homes Beach 2 to awangardowy, elegancki design, który nadaje wnętrzu unikalny i wyrafinowany charakter — ale to nie tylko estetyka. To także komfort codziennego życia.",
+      "Otwarta przestrzeń łącząca salon z kuchnią tworzy nowoczesny, funkcjonalny układ, który maksymalizuje przestrzeń i naturalne światło, budując przytulną, jasną atmosferę idealną do dzielenia się chwilami z bliskimi.",
     ],
     amenities: [],
     image: "/assets/lumare-placeholder-night.webp",
