@@ -171,13 +171,13 @@ export const residences: Residence[] = [
     ctaLabel: "Dołącz do listy prywatnej",
   },
   {
-    slug: "lumare",
+    slug: "cool-homes-beach-2",
     status: "coming-soon",
-    name: "LUMARE",
+    name: "COOL HOMES BEACH 2",
     location: "Nerja",
-    tagline: "Where the cliffs meet the light.",
+    tagline: "A first-class life on the seafront.",
     paragraphs: [
-      "LUMARE powstaje na klifach Nerji, z widokiem na Morze Śródziemne rozciągającym się aż po horyzont.",
+      "Cool Homes Beach 2 powstaje na klifach Nerji, z widokiem na Morze Śródziemne rozciągającym się aż po horyzont.",
       "Dramatyczne wybrzeże i złote światło zachodu słońca — rezydencja stworzona dla wyjątkowych chwil.",
     ],
     amenities: [],
