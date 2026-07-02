@@ -96,4 +96,18 @@
       btn.classList.add("active");
     });
   });
+
+  // Efekt "szronu" (frosted glass) na headerze po przewinięciu strony —
+  // płynnie pojawiający się blur + gradient, tak jak na przyciskach.
+  const header = document.querySelector(".site-header");
+  function updateHeaderScrollState() {
+    if (!header) return;
+    if (window.scrollY > 40) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  }
+  updateHeaderScrollState();
+  window.addEventListener("scroll", updateHeaderScrollState, { passive: true });
 </script>
