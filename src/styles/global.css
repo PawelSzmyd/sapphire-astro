@@ -595,10 +595,10 @@ h2 {
   grid-template-columns: minmax(300px, 1.05fr) minmax(290px, 0.95fr);
   gap: clamp(36px, 6vw, 80px);
   align-items: stretch;
-  padding: clamp(20px, 3vw, 36px);
   border: 1px solid rgba(184, 144, 88, 0.16);
   border-radius: 16px;
   transition: border-color 320ms ease;
+  overflow: hidden;
 }
 
 .residence:hover {
@@ -615,7 +615,6 @@ h2 {
 
 .residence-image-link {
   display: block;
-  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -623,7 +622,6 @@ h2 {
   position: relative;
   min-height: 540px;
   height: 100%;
-  border-radius: 8px;
   border: 1px solid #0d0d0f;
   box-shadow: var(--shadow);
   background-position: center;
@@ -663,7 +661,11 @@ h2 {
 
 .residence-body {
   align-self: center;
-  padding: clamp(8px, 3vw, 32px) clamp(4px, 1vw, 12px);
+  padding: clamp(24px, 3vw, 36px) clamp(24px, 3vw, 36px) clamp(24px, 3vw, 36px) 0;
+}
+
+.residence.reverse .residence-body {
+  padding: clamp(24px, 3vw, 36px) 0 clamp(24px, 3vw, 36px) clamp(24px, 3vw, 36px);
 }
 
 .residence-body h3 {
